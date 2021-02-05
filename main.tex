@@ -1,8 +1,9 @@
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Modelo de TCC da Universidade Tecnológica Federal do Paraná (UTFPR) - Campus Toledo
+%Projeto pedagógico do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná (UTFPR) - Campus Toledo
 %Baseado nas orientações do estilo abntex2 (http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf)
-%Autor: Felipe Walter Dafico Pfrimer
-%Ultima atualização: 12/03/2019
+%Autor: Núcleo Docente Estruturante 
+% Contato: Prof. Felipe Walter Dafico Pfrimer - pfrimer@utfpr.edu.br
+%Ultima atualização: 03/02/2021
 %
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Tipo de documento ABNTEX2:
@@ -30,24 +31,8 @@ english,french,spanish,brazil]{abntex2}
 
 %Observação: Quando um documento é compilado com xelatex, os pacotes inputenc e fontenc não devem ser incluídos ao preâmbulo do documento. Ao invés desses pacotes, geralmente fontspec é usado. O código anterior de preâmbulo torna flexível a compilação do documento, que pode tanto ser realizada da forma tradicional com pdflatex quanto com xelatex, uma vez que inclui seletivamente os pacotes adequados para cada compilador (página 14 do link http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf).
 
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Informações do projeto de TCC:
-\titulo{PROJETO PEDAGÓGICO DO CURSO DE ENGENHARIA ELETRÔNICA}
-\autor{Mévio Albuquerque e Caio Isoudo}
-\orientador{Prof. Tício de Oliveira}
-\coorientador{} %Deixe em branco caso não haja coorientador
-\data{2019} % Apenas o ano
-\local{Toledo} % Apenas a cidade
-
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Preambulo (Texto apresentado na contracapa):
-
-% Não alterar o preambulo!:
-% Se TCC 1:
-\preambulo{Projeto Pedagógico de Curso apresentado ao Conselho de Graduação e Educação Profissional - COGEP da UTFPR e aprovado pela Resolução \pdfmarkupcomment[author=Pfrimer,markup=Highlight,color=yellow]{COGEP XXX, DE XX/XX/20XX}{Inserir depois de aprovado, ou considerar a primeira aprovação pelo COGEP}}
-
-% Se TCC 2:
-%\preambulo{Trabalho de Conclusão de Curso apresentado à disciplina de Trabalho de Conclusão de Curso 2 do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná - UTFPR Campus Toledo, como requisito parcial para a obtenção do título de Bacharel em Engenharia Eletrônica.}
+% Editar o documento "dados_gerais.tex" com as informações do curso
+\input{dados_gerais.tex}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes adicionais:
