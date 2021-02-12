@@ -1,0 +1,26 @@
+% Formatação da capa
+
+\renewcommand{\imprimircapa}{%
+    \begin{capa}%
+        \center
+        \includegraphics[width=3cm]{brasao.eps}
+        
+        \ABNTEXchapterfont\Large \imprimirinstituicao
+        
+        \vspace*{1cm}
+        
+        %{\ABNTEXchapterfont\large\imprimirautor}
+        
+        \vfill
+        \begin{center}
+            \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+        \end{center}
+        \vfill
+        
+        \large\imprimirlocal
+        
+        \large\imprimirdata
+        
+        \vspace*{1cm}
+    \end{capa}
+}

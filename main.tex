@@ -32,7 +32,9 @@ english,french,spanish,brazil]{abntex2}
 %Observação: Quando um documento é compilado com xelatex, os pacotes inputenc e fontenc não devem ser incluídos ao preâmbulo do documento. Ao invés desses pacotes, geralmente fontspec é usado. O código anterior de preâmbulo torna flexível a compilação do documento, que pode tanto ser realizada da forma tradicional com pdflatex quanto com xelatex, uma vez que inclui seletivamente os pacotes adequados para cada compilador (página 14 do link http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf).
 
 % Editar o documento "dados_gerais.tex" com as informações do curso
-\input{dados_gerais.tex}
+\input{dados_gerais}
+
+\input{capa}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes adicionais:
@@ -52,7 +54,7 @@ english,french,spanish,brazil]{abntex2}
 ]{abntex2cite} 
 \usepackage[pdftex]{color,graphicx}
 %\usepackage{graphicx}
-\usepackage{pdfcomment}
+\usepackage[author=Pfrimer,markup=Highlight,color=yellow]{pdfcomment}
 \usepackage{nomencl} % Para a lista abreviaturas e siglas
 \makenomenclature    % Para a lista abreviaturas e siglas
 
@@ -123,11 +125,11 @@ english,french,spanish,brazil]{abntex2}
 \makeatletter
 \hypersetup{
 	%pagebackref=true,
-	pdftitle={Teste}, 
-	pdfauthor={\imprimirautor},
-	pdfsubject={\imprimirpreambulo},
-	pdfcreator={LaTeX with abnTeX2},
-	pdfkeywords={abnt}{latex}{abntex}{abntex2}{livro}, 
+	%pdftitle={Teste}, 
+	%pdfauthor={\imprimirautor},
+	%pdfsubject={\imprimirpreambulo},
+	%pdfcreator={LaTeX with abnTeX2},
+	%pdfkeywords={abnt}{latex}{abntex}{abntex2}{livro}, 
 	colorlinks=true,       		% false: boxed links; true: colored links
 	linkcolor=blue,          	% color of internal links
 	citecolor=blue,        		% color of links to bibliography
@@ -164,15 +166,6 @@ english,french,spanish,brazil]{abntex2}
     % Imprime a folha de rosto (padrão do abntex2)
     \imprimirfolhaderosto*
 
-    % Insere a ficha catalográfica (Não utilizado pela UTFPR até o momento, manter comentado)
-    %\input{abntex2-fichacatalografica.tex}
-
-    % Insere a folha de aprovação (Obrigatório para TCC2)
-    %\input{folha-de-aprovacao.tex} % Altere o arquivo folha-de-aprovacao.tex com as informações do seu TCC
-    
-    % Insere o resumo e o abstract (Obrigatório para TCC2)
-    \input{Caps/resumo.tex} %resumo (deve conter resumo)
-
     %Lista de figuras
     \pdfbookmark[0]{\listfigurename}{lof}
     \listoffigures* 
@@ -195,17 +188,11 @@ english,french,spanish,brazil]{abntex2}
     % Elementos textuais
     \textual
     
-    % A estrutura deve respeitar as normas da ABNT
-    \input{Caps/orientacoes_modelo.tex} 
+    
+    %\input{Caps/orientacoes_modelo.tex} 
     \input{Caps/cap1.tex}
     
-    % O TCC 1 deve conter:
-    %   1 - Introdução
-    %   2 - Objetivos
-    %   3 - Justificativa
-    %   4 - Referencial teórico
-    %   5 - Materiais e métodos
-    %   6 - Resultados esperados
+    perados
     %   7 - Cronograma
     
     
@@ -216,10 +203,10 @@ english,french,spanish,brazil]{abntex2}
     
     % Apêndices:
     \apendices
-    \input{Apendices/apendice_1.tex}
+    %\input{Apendices/apendice_1.tex}
     
     % Anexos:
     \anexos
-    \input{Anexos/anexo_1.tex}
+    %\input{Anexos/anexo_1.tex}
     
 \end{document}
