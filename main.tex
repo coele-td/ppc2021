@@ -88,6 +88,8 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{hyperref}
 
 %insira novos pacotes aqui:
+\usepackage{pgfplotstable} % Permite criar tabelas com arquivos csv
+\usepackage{booktabs} % Estilos de linha para tabelas
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Outras configurações:
@@ -148,6 +150,10 @@ english,french,spanish,brazil]{abntex2}
 }
 \makeatother
 
+% comandos customizados
+
+\newcommand{\utf}{Universidade Tecnológica Federal do Paraná}
+
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Início do documento:
 \begin{document}
@@ -192,7 +198,6 @@ english,french,spanish,brazil]{abntex2}
     %\input{Caps/orientacoes_modelo.tex} 
     \input{Caps/cap1.tex}
     
-    perados
     %   7 - Cronograma
     
     

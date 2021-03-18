@@ -15,5 +15,27 @@ A escola ganhou, assim, maior autonomia e passou a chamar-se Escola Técnica Fed
 \nomenclature[A]{CEFET-PR}{Centro Federal de Educação Tecnológica do Paraná}
 \nomenclature[A]{LDBE}{Lei de Diretrizes e Bases da Educação}
 
+Após sete anos de preparo e o aval do governo federal, o projeto tornou-se lei no dia 7 de outubro de 2005. O CEFET-PR, então, passou a ser a Universidade Tecnológica Federal do Paraná (UTFPR) \cite{Lei:11.184:2005} – a primeira especializada do Brasil. Atualmente, a Universidade Tecnológica conta com 13 câmpus, distribuídos nas cidades de Apucarana, Campo Mourão, Cornélio Procópio, Curitiba, Dois Vizinhos, Francisco Beltrão, Guarapuava, Londrina,  Medianeira, Pato Branco, Ponta Grossa, Santa Helena e Toledo, conforme mostra a \autoref{fig:13campi}. O Quadro 1 apresenta, de forma resumida, as diferentes denominações que a instituição teve ao longo do tempo.
 
+\nomenclature[A]{UTFPR}{Universidade Tecnológica Federal do Paraná}
 
+    \begin{figure}[!htb]
+        \centering
+        \caption[Localização dos 13 Câmpus da UTFPR]{Localização dos 13 Câmpus da UTFPR no estado do Paraná}
+        \includegraphics[width=0.7\textwidth]{Caps/Figs/campus_utfpr.png}
+        \fonte{\utf}
+        \label{fig:13campi}
+    \end{figure}
+    
+    \begin{quadro}
+        \centering
+        \caption[Diferentes denominações da UTFPR]{As diferentes denominações da UTFPR ao longo de sua existência}
+        \pgfplotstabletypeset[%
+		every head row/.style={before row=\toprule,after row=\midrule},
+		every last row/.style={after row=\bottomrule},
+		columns/Fruit/.style={string type},
+		columns/Animal/.style={string type}
+	    ]%
+	    {Caps/Quadros/denominacoes_utfpr.csv}
+        \label{qua:denomi}
+    \end{quadro}
