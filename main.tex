@@ -55,6 +55,7 @@ english,french,spanish,brazil]{abntex2}
 \usepackage[pdftex]{color,graphicx}
 %\usepackage{graphicx}
 \usepackage[author=Pfrimer,markup=Highlight,color=yellow]{pdfcomment}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{nomencl} % Para a lista abreviaturas e siglas
 \makenomenclature    % Para a lista abreviaturas e siglas
 
@@ -88,9 +89,26 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{hyperref}
 
 %insira novos pacotes aqui:
+
 \usepackage{pgfplotstable} % Permite criar tabelas com arquivos csv
 \usepackage{booktabs} % Estilos de linha para tabelas
 \usepackage{enumitem} % Para formatar as listas
+\usepackage{multicol} % Mesclar colunas em tabelas
+\usepackage{multirow} % Mesclar linhas em tabelas
+\usepackage{eurosym}
+\usepackage{pdflscape}
+\usepackage{colortbl}
+\usepackage{cellspace}
+\setlength\aboverulesep{0pt}
+\setlength\belowrulesep{0pt}
+\setlength\cellspacetoplimit{3pt}
+\setlength\cellspacebottomlimit{3pt}
+\usepackage{bigstrut}
+\usepackage{makecell}
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Outras configurações:
@@ -198,9 +216,12 @@ english,french,spanish,brazil]{abntex2}
     
     %\input{Caps/orientacoes_modelo.tex} 
     
+    \input{Caps/todo.tex} % Pendências do documento	
     \input{Caps/cap1.tex} % CONTEXTUALIZAÇÃO DA INSTITUIÇÃO
     \input{Caps/cap2.tex} % VALORES E PRINCÍPIOS INSTITUCIONAIS
-    
+    \input{Caps/cap3.tex} % POLÍTICAS DE ENSINO
+    \input{Caps/cap4.tex} % CONTEXTUALIZAÇÃO
+    \input{Caps/cap5.tex} % Matriz curricular
     
     
     
