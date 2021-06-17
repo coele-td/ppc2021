@@ -42,7 +42,8 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{tabto}
 
 \usepackage[%
-    alf,
+    %alf,
+    num,
     abnt-emphasize=bf,
     bibjustif,
     recuo=0cm,
@@ -210,13 +211,15 @@ english,french,spanish,brazil]{abntex2}
     \cleardoublepage
     
     %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    \input{Caps/todo.tex} % Pendências do documento
     % Elementos textuais
     \textual
     
     
     %\input{Caps/orientacoes_modelo.tex} 
+    \input{Caps/apresentacao.tex}
     
-    \input{Caps/todo.tex} % Pendências do documento	
+    	
     \input{Caps/cap1.tex} % CONTEXTUALIZAÇÃO DA INSTITUIÇÃO
     \input{Caps/cap2.tex} % VALORES E PRINCÍPIOS INSTITUCIONAIS
     \input{Caps/cap3.tex} % POLÍTICAS DE ENSINO
