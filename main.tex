@@ -100,16 +100,18 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{pdflscape}
 \usepackage{colortbl}
 \usepackage{cellspace}
-\setlength\aboverulesep{0pt}
-\setlength\belowrulesep{0pt}
-\setlength\cellspacetoplimit{3pt}
-\setlength\cellspacebottomlimit{3pt}
+\usepackage{csvsimple} % Para ler arquivos CSV
+\usepackage{tabularx} % Estilo alyetnativo de tabela
+% \setlength\aboverulesep{0pt}
+% \setlength\belowrulesep{0pt}
+% \setlength\cellspacetoplimit{3pt}
+% \setlength\cellspacebottomlimit{3pt}
 \usepackage{bigstrut}
 \usepackage{makecell}
-\renewcommand\theadalign{bc}
-\renewcommand\theadfont{\bfseries}
-\renewcommand\theadgape{\Gape[4pt]}
-\renewcommand\cellgape{\Gape[4pt]}
+% \renewcommand\theadalign{bc}
+% \renewcommand\theadfont{\bfseries}
+% \renewcommand\theadgape{\Gape[4pt]}
+% \renewcommand\cellgape{\Gape[4pt]}
 
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -141,6 +143,12 @@ english,french,spanish,brazil]{abntex2}
 % Configuração de posicionamento padrão:
 \setfloatlocations{quadro}{hbtp}
 
+% Configurações de tabelas
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Coloca um checkmark caso a disciplina seja extencionista
+
+% Comandos customizados
+\input{comandos.tex}
 
 %\setlength\afterchapskip{\lineskip} % Espaçamento de 1,5 entre o título do capítulo e corpo do texto
 
@@ -171,9 +179,7 @@ english,french,spanish,brazil]{abntex2}
 }
 \makeatother
 
-% comandos customizados
 
-\newcommand{\utf}{Universidade Tecnológica Federal do Paraná}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Início do documento:
@@ -216,6 +222,9 @@ english,french,spanish,brazil]{abntex2}
     % Elementos textuais
     \textual
     
+
+    % Cálculo das horas
+    \input{Contadores/contadores.tex}
     
     %\input{Caps/orientacoes_modelo.tex} 
     \input{Caps/apresentacao.tex}

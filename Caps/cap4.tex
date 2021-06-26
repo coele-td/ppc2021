@@ -9,18 +9,19 @@ A UTFPR, com mais de um século de existência, tem se consolidado como uma inst
 \nomenclature[A]{REUNI}{Programa de Apoio a Planos de Reestruturação e Expansão das Universidades Federais}
 
 \begin{quadro}
-	\centering
+	\centering\small
 	\caption[Cursos de Engenharia eletrônica próximos à Toledo/PR]{Cursos de Engenharia eletrônica próximos à Toledo/PR}
-	\pgfplotstabletypeset[%
-	col sep = semicolon,
-	every head row/.style={before row=\toprule,after row=\midrule},
-	every last row/.style={after row=\bottomrule},
-	columns/Instituição/.style={string type},
-	columns/Curso/.style={string type},
-	columns/Cidade/.style={string type},
-	columns/Distância/.style={string type}
-	]%
-	{Caps/Quadros/cusos_prox.csv}
+	\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X cc}
+		\toprule%
+		\rowcolor{white}\bfseries Instituição & \bfseries Nome do Curso & \bfseries Cidade & \bfseries Distância\\
+		\midrule
+		\csvreader[	head to column names,
+					late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+					separator=pipe]%
+					{Caps/Quadros/cursosProx.csv}{}%
+					{\inst & \curso & \cidade & \dist}%
+		\bottomrule
+		\end{tabularx}
 	\label{qua:cursoskm}
 \end{quadro}
 
@@ -56,21 +57,22 @@ Dessa forma, o egresso do curso de Engenharia Eletrônica pode atuar em diversas
 O \autoref{qua:geral} representa os dados gerais do curso.
 
 \begin{quadro}
-	\centering
-	\caption[Dados gerais do curso]{Dados gerais do curso}
-	\newcolumntype{C}{>{\centering\arraybackslash}p{0.25\textwidth}}% a centered fixed-width-column
-	\newcolumntype{D}{>{\centering\arraybackslash}p{0.75\textwidth}}% a centered fixed-width-column
-	\renewcommand{\arraystretch}{2}
-	\pgfplotstabletypeset[%
-	col sep = semicolon,
-	every head row/.style={before row = \hline, after row=\hline},
-	every nth row={1}{before row=\hline},
-	every last row/.style={after row=\hline},
-	columns/Nome do curso/.style={string type, column type=|C},	
-	columns/Engenharia Eletrônica/.style={string type, column type=|D|}	
-	]%
-	{Caps/Quadros/quadro_geral.csv}
+	\centering\small
+	\caption[Dados gerais do curso]{Dados gerais do curso}	
 	\label{qua:geral}
+	\begin{tabularx}{0.8\textwidth}{|>{\raggedleft\arraybackslash}X || >{\raggedright\arraybackslash}X|}
+		\hline
+		\csvreader[	head to column names,
+					separator=pipe,
+					late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+					table head=\hline, 
+					table foot=\hline]%
+					{Caps/Quadros/quadroGeral.csv}{}{%
+						\tipo & \dado 
+					}
+		\hline
+	\end{tabularx}
+	
 \end{quadro}
 
 \section{FORMA DE INGRESSO E VAGAS}

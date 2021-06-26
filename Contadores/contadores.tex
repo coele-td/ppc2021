@@ -1,0 +1,10 @@
+% Contatador genérico de horas para comandos
+\newcounter{horasP}	% Contador das horas do período
+\setcounter{horasP}{0} % O Contador deve ser zerado
+
+% Contador de horas do primeiro perído
+\newcounter{horasP1}	% Contador das horas do período
+\setcounter{horasP1}{0} % O Contador deve ser zerado
+
+\csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{1}]{Dados/unidadesCurriculares.csv}{}% 
+{\addtocounter{horasP1}{\chtotal}} % Conta as horas do Primeiro período
