@@ -1,11 +1,14 @@
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-%Projeto pedagógico do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná (UTFPR) - Campus Toledo
-%Baseado nas orientações do estilo abntex2 (http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf)
-%Autor: Núcleo Docente Estruturante 
-% Contato: Prof. Felipe Walter Dafico Pfrimer - pfrimer@utfpr.edu.br
-%Ultima atualização: 03/02/2021
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%   
+%   Projeto pedagógico do Curso de Engenharia Eletrônica da Universidade Tecnológica Federal do Paraná 
+%   (UTFPR) - Campus Toledo
+%   Baseado nas orientações do estilo abntex2 (http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf)
+%   Autor: Núcleo Docente Estruturante 
+%   Contato: Prof. Felipe Walter Dafico Pfrimer - pfrimer@utfpr.edu.br
+%   Última atualização: 03/02/2021
 %
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 %Tipo de documento ABNTEX2:
 \documentclass[12pt,openright,oneside,a4paper,
 %sumario=tradicional, % para o recomendado pela ABNT utilize sumario=abnt-6027-2012
@@ -18,7 +21,7 @@ subsubsubsection=TITLE, % títulos de subsubsubseções em letras maiúsculas
 english,french,spanish,brazil]{abntex2}
 %Observe que a ABNT NBR 14724:2011 (seção 5.1) recomenda que os documentos sejam impressos no anverso e no verso das folhas. Isso é obtido com a opção twoside.
 
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes para língua portuguesa do Brasil (código recomendado pelo estilo abntex2):
 \usepackage{ifxetex}
 \ifxetex
@@ -36,7 +39,7 @@ english,french,spanish,brazil]{abntex2}
 
 \input{capa}
 
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes adicionais:
 \usepackage{amssymb}
 \usepackage{tabto}
@@ -53,8 +56,8 @@ english,french,spanish,brazil]{abntex2}
     abnt-etal-list=3,
     abnt-thesis-year=final
 ]{abntex2cite} 
+\usepackage{forloop}
 \usepackage[pdftex]{color,graphicx}
-%\usepackage{graphicx}
 \usepackage[author=Pfrimer,markup=Highlight,color=yellow]{pdfcomment}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{nomencl} % Para a lista abreviaturas e siglas
@@ -84,14 +87,14 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{lipsum} % Para texto filler
 \usepackage{verbatim}
 \usepackage{listings}
-\usepackage{pgfgantt}
+%\usepackage{pgfgantt}
 %\usepackage[a-1b]{pdfx}
 
 \usepackage{hyperref}
 
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %insira novos pacotes aqui:
 
-\usepackage{pgfplotstable} % Permite criar tabelas com arquivos csv
 \usepackage{booktabs} % Estilos de linha para tabelas
 \usepackage{enumitem} % Para formatar as listas
 \usepackage{multicol} % Mesclar colunas em tabelas
@@ -113,8 +116,7 @@ english,french,spanish,brazil]{abntex2}
 % \renewcommand\theadgape{\Gape[4pt]}
 % \renewcommand\cellgape{\Gape[4pt]}
 
-
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Outras configurações:
 
 % "Por padrão, uma versão sem serifas da fonte corrente do documento é utilizada para os títulos das divisões. Você pode customizar a fonte dos títulos dos capítulos alterando os comandos como no exemplo a seguir, para que seja utilizada a fonte Computer Modern com tamanho maior do que o utilizado por padrão" (manual do abntex2).
@@ -145,7 +147,6 @@ english,french,spanish,brazil]{abntex2}
 
 % Configurações de tabelas
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
-\newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Coloca um checkmark caso a disciplina seja extencionista
 
 % Comandos customizados
 \input{comandos.tex}
@@ -179,12 +180,10 @@ english,french,spanish,brazil]{abntex2}
 }
 \makeatother
 
-
-
-%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Início do documento:
 \begin{document}
-    %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     % Elementos pré-textuais
     \pretextual
 
@@ -217,7 +216,7 @@ english,french,spanish,brazil]{abntex2}
     \tableofcontents*
     \cleardoublepage
     
-    %+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     \input{Caps/todo.tex} % Pendências do documento
     % Elementos textuais
     \textual

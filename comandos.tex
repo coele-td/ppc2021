@@ -1,15 +1,70 @@
-% comandos customizados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Comandos customizados
+%
+%   Este arquivo lista comandos customizados para utilizar no PCC.
+%   Muitos comandos utilizam diretamente o arquivo Dados/unidadesCurriculares.csv
+% 
 
+% Escreve o nome por extenço da UTFPR:
 \newcommand{\utf}{Universidade Tecnológica Federal do Paraná}
 
-\newcommand{\tabelaPeriodo}[2]{
+% Coloca um checkmark caso a disciplina seja extencionista:
+\newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Utilizado nas tabelas das unidades curriculares dos períodos
+
+% Escreve o período por extenso
+\newcommand{\pernum}[1]{% \pernum{<número do período de 1 à 10>}
+    \ifnum #1 = 1
+        Primeiro
+    \else
+        \ifnum #1 = 2
+            Segundo
+        \else
+            \ifnum #1 = 3
+                Terceiro
+            \else
+                \ifnum #1 = 4
+                    Quarto
+                \else
+                    \ifnum #1 = 5
+                        Quinto
+                    \else
+                        \ifnum #1 = 6
+                            Sexto
+                        \else
+                            \ifnum #1 = 7
+                                Sétimo
+                            \else
+                                \ifnum #1 = 8
+                                    Oitavo
+                                \else
+                                    \ifnum #1 = 9
+                                        Nono
+                                    \else
+                                        \ifnum #1 = 10
+                                            Décimo
+                                        \else
+                                            !Erro!
+                                        \fi
+                                    \fi
+                                \fi
+                            \fi
+                        \fi
+                    \fi
+                \fi
+            \fi
+        \fi
+    \fi
+}
+
+% Imprime a planilha do período
+\newcommand{\tabelaPeriodo}[2]{% \tabelaPeriodo{<número do período de 1 à 10>}{<arquivo csv>}
     
     \setcounter{horasP}{0} % O Contador deve ser zerado
 
     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccccc}\toprule
 
         % Primerira linha:
-    	\multicolumn{3}{c||}{\bfseries #2 Período}	&	\multicolumn{5}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{5}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
@@ -21,7 +76,7 @@
                     %before first line=\\\rowcolor{gray!10},                 
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
-                    {Dados/unidadesCurriculares.csv}{}%
+                    {#2}{}%
     	{\nome	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chnpTeorica	& \chnpPratica	& \chtotal \addtocounter{horasP}{\chtotal}}%
 
     	\bottomrule
@@ -31,7 +86,47 @@
     	\multicolumn{8}{l}{$^2$ \tiny PP - Presencial Prática}\\
     	\multicolumn{8}{l}{$^3$ \tiny NPT - Não Presencial Teórica}\\
     	\multicolumn{8}{l}{$^4$ \tiny NPP - Não Presencial Prática}\\		
-    \end{tabularx}
-    
+    \end{tabularx}    
 }	
 
+% Imprime as ementas de um período
+\newcommand{\imprimeEmentas}[2]{% % \imprimeEmentas{<número do período de 1 à 10>}{<arquivo csv>}
+    \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
+	
+		\begin{quadro}[hbt!]
+			\centering
+			\caption{Dados estruturais da unidade curricular de \nome}
+			\label{qua:uc\codigo}
+			\begin{tabularx}{\textwidth}{|c|c|c|c|}
+				\hline
+				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \Large \nome \vspace{5pt}}\\ \hline\hline				
+				\cellcolor[HTML]{C0C0C0}Período                                                 & \periodo			& \cellcolor[HTML]{C0C0C0}Código			& \codigo		\\ \hline
+				\cellcolor[HTML]{C0C0C0}Referência na matriz                                    & \referencia		& \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		\\ \hline
+				\cellcolor[HTML]{C0C0C0}Área do Conhecimento                                    & \areaConhecimento	& \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	\\ \hline				
+				\cellcolor[HTML]{C0C0C0}Extensionista 											& \ifext{não}{sim}  & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma       \\ \hline\hline
+				\multirow{4}{*}{\bfseries Carga Horária}     & \multirow{2}{*}{\bfseries Presencial} & Teórica (h)  & \chTeorica  \\ \cline{3-4}
+				& & Prática (h) & \chPratica\\ \cline{2-4}
+				& \multirow{2}{*}{\bfseries Não Presencial} & Teórica (h) & \chnpTeorica\\ \cline{3-4}
+				& & Prática (h) & \chnpPratica\\ \hline
+
+				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		\\ \hline\hline
+				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			\\ \hline
+				\multicolumn{4}{|>{\hsize=\hsize}X|}{\ementa}                                                                                                                   \\ \hline
+			\end{tabularx}
+			\fonte{Autoria própria}
+		\end{quadro}
+	
+	}
+}
+
+\newcommand{\tiraespaco}{)}
+\newcommand{\listaUC}[2]{
+    \csvreader[ head to column names, 
+                separator=pipe,                
+                late after line={\!,\space},
+                late after first line={\!,\space},
+                late after last line={\!},
+                filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
+        \space\nome\space(\autoref{qua:uc\codigo}\tiraespaco
+    }\!
+}

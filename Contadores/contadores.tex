@@ -2,9 +2,22 @@
 \newcounter{horasP}	% Contador das horas do período
 \setcounter{horasP}{0} % O Contador deve ser zerado
 
-% Contador de horas do primeiro perído
-\newcounter{horasP1}	% Contador das horas do período
-\setcounter{horasP1}{0} % O Contador deve ser zerado
 
-\csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{1}]{Dados/unidadesCurriculares.csv}{}% 
-{\addtocounter{horasP1}{\chtotal}} % Conta as horas do Primeiro período
+% Contador de horas dos períodos
+
+\makeatletter
+\newcounter{x}  % Valor do período
+\setcounter{x}{0}
+\@whilenum\value{x}<11\do{%             % Cria 10 contadores de 1 à 10
+    \stepcounter{x}
+    \newcounter{horasP\the\value{x}}	% Contador das horas do período
+    \setcounter{horasP\the\value{x}}{0} % O Contador deve ser zerado
+
+    \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{\the\value{x}}]{Dados/unidadesCurriculares.csv}{}% 
+    {\addtocounter{horasP\the\value{x}}{\chtotal}} % Conta as horas do Primeiro período
+}
+\makeatother
+
+
+\the\value{horasP1}
+
