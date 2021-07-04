@@ -61,14 +61,14 @@
     
     \setcounter{horasP}{0} % O Contador deve ser zerado
 
-    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccccc}\toprule
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
 
         % Primerira linha:
     	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{5}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
-    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extencionista & \bfseries PT$^1$ & \bfseries PP$^2$& \bfseries NPT$^3$ & \bfseries NPP$^4$ & \bfseries Total\\
+    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total\\
     	\midrule
     
         \csvreader[ head to column names,
@@ -119,6 +119,7 @@
 	}
 }
 
+% Lista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
 \newcommand{\tiraespaco}{)}
 \newcommand{\listaUC}[2]{
     \csvreader[ head to column names, 
