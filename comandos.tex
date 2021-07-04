@@ -64,7 +64,7 @@
     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
 
         % Primerira linha:
-    	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{5}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
@@ -77,15 +77,17 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
                     {#2}{}%
-    	{\nome	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chnpTeorica	& \chnpPratica	& \chtotal \addtocounter{horasP}{\chtotal}}%
+    	{\nome	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal \addtocounter{horasP}{\chtotal}}%
 
     	\bottomrule
-    	\rowcolor{white}\multicolumn{7}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP}\\
+        \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária presencial total:} & \bfseries \the\value{horasP}\\
+        \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária não-presencial total:} & \bfseries \the\value{horasP}\\
+    	\rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP}\\
     	\bottomrule    	
-    	\multicolumn{8}{l}{$^1$ \tiny PT - Presencial Teórica}\\
-    	\multicolumn{8}{l}{$^2$ \tiny PP - Presencial Prática}\\
-    	\multicolumn{8}{l}{$^3$ \tiny NPT - Não Presencial Teórica}\\
-    	\multicolumn{8}{l}{$^4$ \tiny NPP - Não Presencial Prática}\\		
+    	\multicolumn{7}{l}{$^1$ \tiny PT - Presencial Teórica}\\
+    	\multicolumn{7}{l}{$^2$ \tiny PP - Presencial Prática}\\
+    	\multicolumn{7}{l}{$^3$ \tiny NPT - Não Presencial Teórica}\\
+    	\multicolumn{7}{l}{$^4$ \tiny NPP - Não Presencial Prática}\\		
     \end{tabularx}    
 }	
 
