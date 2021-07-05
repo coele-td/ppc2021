@@ -1,6 +1,21 @@
 % Contatador genérico de horas presenciais para comandos
-\newcounter{horasP}	% Contador das horas do período
+
+\newcounter{horasAT}	% Contador das horas presenciais do curso
+\setcounter{horasAT}{0} % O Contador deve ser zerado
+
+\newcounter{horasAP}	% Contador das horas presenciais do curso
+\setcounter{horasAP}{0} % O Contador deve ser zerado
+
+\newcounter{horasP}	% Contador das horas presenciais do curso
 \setcounter{horasP}{0} % O Contador deve ser zerado
+
+% Contatador genérico de horas não-presenciais para comandos
+\newcounter{horasANP}	% Contador das horas não-presenciais do curso
+\setcounter{horasANP}{0} % O Contador deve ser zerado
+
+% Contatador genérico de horas totais para comandos
+\newcounter{horasT}	% Contador das horas totais do curso
+\setcounter{horasT}{0} % O Contador deve ser zerado
 
 
 % Contador de horas dos períodos
@@ -10,14 +25,43 @@
 \setcounter{x}{0}
 \@whilenum\value{x}<11\do{%             % Cria 10 contadores de 1 à 10
     \stepcounter{x}
-    \newcounter{horasP\the\value{x}}	% Contador das horas do período
+
+    \newcounter{horasAT\the\value{x}}	% Contador das Atividades teóricas do período
+    \setcounter{horasAT\the\value{x}}{0} % O Contador deve ser zerado
+    
+    \newcounter{horasAP\the\value{x}}	% Contador das Atividades práticas do período
+    \setcounter{horasAP\the\value{x}}{0} % O Contador deve ser zerado
+
+    \newcounter{horasP\the\value{x}}	% Contador das Atividades Presenciais do período
     \setcounter{horasP\the\value{x}}{0} % O Contador deve ser zerado
 
-    \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{\the\value{x}}]{Dados/unidadesCurriculares.csv}{}% 
-    {\addtocounter{horasP\the\value{x}}{\chtotal}} % Conta as horas do Primeiro período
-}
+    \newcounter{horasANP\the\value{x}}	% Contador das Atividades Presenciais do período
+    \setcounter{horasANP\the\value{x}}{0} % O Contador deve ser zerado
+
+    \newcounter{horasT\the\value{x}}	% Contador das horas totais do período
+    \setcounter{horasT\the\value{x}}{0} % O Contador deve ser zerado
+
+    \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{\the\value{x}}]{Dados/unidadesCurriculares.csv}{} %
+    {
+        \addtocounter{horasAT\the\value{x}}{\chTeorica}                 % Conta AT do período x
+        \addtocounter{horasAP\the\value{x}}{\chPratica}                 % Conta AP do período x
+        \addtocounter{horasP\the\value{x}}{\chTeorica + \chPratica}     % Atividades presenciais (AT + AP) do período x
+        \addtocounter{horasANP\the\value{x}}{\anp}                      % ANP do período x
+        \addtocounter{horasT\the\value{x}}{\chtotal}                   % Total do período x
+    } % Conta as horas do curso
+
+    \addtocounter{horasAT}{\value{horasAT\the\value{x}}}                % Total Teórico - AT
+    \addtocounter{horasAP}{\value{horasAP\the\value{x}}}                % Total Prático - AP
+    \addtocounter{horasP}{\value{horasP\the\value{x}}}                  % Total presencial
+    \addtocounter{horasANP}{\value{horasANP\the\value{x}}}              % Total não-presencial
+    \addtocounter{horasT}{\value{horasT\the\value{x}}}                  % Total
+    
+}%
 \makeatother
 
 
-\the\value{horasP1}
 
+
+
+
+    

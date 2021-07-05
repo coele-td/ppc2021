@@ -5,10 +5,10 @@
 %   Muitos comandos utilizam diretamente o arquivo Dados/unidadesCurriculares.csv
 % 
 
-% Escreve o nome por extenço da UTFPR:
+% Escreve o nome por extenso da UTFPR:
 \newcommand{\utf}{Universidade Tecnológica Federal do Paraná}
 
-% Coloca um checkmark caso a disciplina seja extencionista:
+% Coloca um checkmark caso a disciplina seja extensionista:
 \newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Utilizado nas tabelas das unidades curriculares dos períodos
 
 % Escreve o período por extenso
@@ -59,11 +59,9 @@
 % Imprime a planilha do período
 \newcommand{\tabelaPeriodo}[2]{% \tabelaPeriodo{<número do período de 1 à 10>}{<arquivo csv>}
     
-    \setcounter{horasP}{0} % O Contador deve ser zerado
-
     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
 
-        % Primerira linha:
+        % Primeira linha:
     	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
@@ -77,17 +75,23 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
                     {#2}{}%
-    	{\nome	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal \addtocounter{horasP}{\chtotal}}%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
 
-    	\bottomrule
-        \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária presencial total:} & \bfseries \the\value{horasP}\\
-        \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária não-presencial total:} & \bfseries \the\value{horasP}\\
-    	\rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP}\\
-    	\bottomrule    	
-    	\multicolumn{7}{l}{$^1$ \tiny PT - Presencial Teórica}\\
-    	\multicolumn{7}{l}{$^2$ \tiny PP - Presencial Prática}\\
-    	\multicolumn{7}{l}{$^3$ \tiny NPT - Não Presencial Teórica}\\
-    	\multicolumn{7}{l}{$^4$ \tiny NPP - Não Presencial Prática}\\		
+    	\midrule
+
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        
+        % \midrule
+        
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária presencial total:} & \bfseries \the\value{horasP#1}\\
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária não-presencial total:} & \bfseries \the\value{horasANP#1}\\
+    	% \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP#1}\\
+
+    	\bottomrule  
+
+    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais}\\	
     \end{tabularx}    
 }	
 
@@ -95,21 +99,20 @@
 \newcommand{\imprimeEmentas}[2]{% % \imprimeEmentas{<número do período de 1 à 10>}{<arquivo csv>}
     \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
 	
-		\begin{quadro}[hbt!]
+		\begin{quadro}[!ht]
 			\centering
 			\caption{Dados estruturais da unidade curricular de \nome}
 			\label{qua:uc\codigo}
-			\begin{tabularx}{\textwidth}{|c|c|c|c|}
+			\begin{tabularx}{\textwidth}{|c|>{\centering}m{4cm}|c|c|}
 				\hline
 				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \Large \nome \vspace{5pt}}\\ \hline\hline				
-				\cellcolor[HTML]{C0C0C0}Período                                                 & \periodo			& \cellcolor[HTML]{C0C0C0}Código			& \codigo		\\ \hline
+				\cellcolor[HTML]{C0C0C0}Período                                                 & \hyperref[tab:per\periodo]{\pernum{\periodo}}			& \cellcolor[HTML]{C0C0C0}Código			& \codigo		\\ \hline
 				\cellcolor[HTML]{C0C0C0}Referência na matriz                                    & \referencia		& \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		\\ \hline
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento                                    & \areaConhecimento	& \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	\\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 											& \ifext{não}{sim}  & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma       \\ \hline\hline
-				\multirow{4}{*}{\bfseries Carga Horária}     & \multirow{2}{*}{\bfseries Presencial} & Teórica (h)  & \chTeorica  \\ \cline{3-4}
-				& & Prática (h) & \chPratica\\ \cline{2-4}
-				& \multirow{2}{*}{\bfseries Não Presencial} & Teórica (h) & \chnpTeorica\\ \cline{3-4}
-				& & Prática (h) & \chnpPratica\\ \hline
+				\multirow{4}{*}{\bfseries Carga Horária}     & \multirow{2}{*}{\bfseries Presencial} & Teórica - AT  & \chTeorica{} h  \\ \cline{3-4}
+				& & Prática - AP & \chPratica{} h\\ \cline{2-4}
+				& \multicolumn{2}{c|}{\bfseries Não Presencial - ANP} & \anp{} h\\ \hline
 
 				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		\\ \hline\hline
 				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			\\ \hline
@@ -123,13 +126,22 @@
 
 % Lista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
 \newcommand{\tiraespaco}{)}
-\newcommand{\listaUC}[2]{
+\newcommand{\listaUC}[2]{\!\!\!
     \csvreader[ head to column names, 
                 separator=pipe,                
-                late after line={\!,\space},
-                late after first line={\!,\space},
-                late after last line={\!},
+                late after line={{,}\space},
+                late after first line={{,}\space},
+                late after last line={},
                 filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
-        \space\nome\space(\autoref{qua:uc\codigo}\tiraespaco
-    }\!
+        \nome\space(\autoref{qua:uc\codigo}\tiraespaco
+    }\!\!
 }
+
+% \newcommand{\listaUC}[2]{
+%     \csvreader[ head to column names, 
+%                 separator=pipe,
+%                 late after line={{,}\space}, 
+%                 filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
+%         \nome\tiraespaco
+%     }
+% }
