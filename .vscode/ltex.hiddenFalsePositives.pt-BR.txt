@@ -1,0 +1,3 @@
+{"rule":"HUNSPELL_RULE","sentence":"^\\QA escolha do(a) coordenador(a) é norteada Resolução n 145/2019 - COGEP, de 6 de dezembro de 2019 \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"HUNSPELL_RULE","sentence":"^\\QRessalta-se que a escolha do(a) coordenador(a) é norteada Resolução n 145/2019 — COGEP, de 6 de dezembro de 2019 \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"HUNSPELL_RULE","sentence":"^\\QSubseção III — Das Coordenações de Curso, Art. 27, 28 e 29 \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
