@@ -124,7 +124,7 @@
 	}
 }
 
-% Lista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
+%mLista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
 \newcommand{\tiraespaco}{)}
 \newcommand{\listaUC}[2]{\!\!\!
     \csvreader[ head to column names, 
@@ -137,11 +137,13 @@
     }\!\!
 }
 
+%\newcommand{\tiraespaco}{)}
 % \newcommand{\listaUC}[2]{
-%     \csvreader[ head to column names, 
-%                 separator=pipe,
-%                 late after line={{,}\space}, 
-%                 filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
-%         \nome\tiraespaco
-%     }
+    
+%     \csvreader[ head to column names,
+%                 before first line=\autoref{qua:uc\codigo},
+%                 after line=\space{à} \autoref{qua:uc\codigo},
+%                 separator=pipe, 
+%                 filter test=\ifnumequal{\periodo}{#1}]{#2}{}{}
+    
 % }
