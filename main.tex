@@ -42,6 +42,10 @@ english,french,spanish,brazil]{abntex2}
 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Pacotes adicionais:
+
+
+
+
 \usepackage{amssymb}
 \usepackage{tabto}
 
@@ -105,6 +109,15 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{colortbl}
 \usepackage{cellspace}
 \usepackage{csvsimple} % Para ler arquivos CSV
+
+\usepackage{fp}
+\usepackage{siunitx}
+\gdef\numdec{3}
+
+% Configura o modo matemático para substituir o ponto por vírgula
+\mathchardef\period=\mathcode`.
+\DeclareMathSymbol{.}{\mathord}{letters}{"3B}
+
 \usepackage{tabularx} % Estilo alyetnativo de tabela
 % \setlength\aboverulesep{0pt}
 % \setlength\belowrulesep{0pt}
@@ -236,11 +249,11 @@ english,french,spanish,brazil]{abntex2}
     \input{Caps/cap4.tex} % CONTEXTUALIZAÇÃO
     \input{Caps/cap5.tex} % Matriz curricular
     \input{Caps/cap6.tex}
-    \input{Caps/cap7.tex} % ESTRUTURA ORGANIZACIONAL DO CURSO
-    \input{Caps/cap8.tex}
-    \input{Caps/cap9.tex}
-    \input{Caps/cap10.tex}
-    \input{Caps/cap11.tex}
+    %\input{Caps/cap7.tex} % ESTRUTURA ORGANIZACIONAL DO CURSO
+    %\input{Caps/cap8.tex}
+    %\input{Caps/cap9.tex}
+    %\input{Caps/cap10.tex}
+    %\input{Caps/cap11.tex}
     
     
     
