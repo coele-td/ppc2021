@@ -36,6 +36,7 @@
 
 \makeatletter
 \newcounter{x}  % Valor do período
+\newcounter{y}  % Valor do período
 \setcounter{x}{0}
 \@whilenum\value{x}<12\do{%             % Cria 10 contadores de 1 à 10
     \stepcounter{x}
@@ -74,7 +75,9 @@
     {
         \addtocounter{horasAT\the\value{x}}{\chTeorica}                             % Conta AT do período x
         \addtocounter{horasAP\the\value{x}}{\chPratica}                             % Conta AP do período x
-        \addtocounter{horasP\the\value{x}}{\chTeorica + \chPratica}                 % Atividades presenciais (AT + AP) do período x
+        \setcounter{y}{\chPratica}
+        \addtocounter{y}{\chTeorica}
+        \addtocounter{horasP\the\value{x}}{\the\value{y}}                 % Atividades presenciais (AT + AP) do período x
         \addtocounter{horasANP\the\value{x}}{\anp}                                  % ANP do período x
         \addtocounter{horasT\the\value{x}}{\chtotal}                                % Total do período x
         \addtocounter{horasEXT\the\value{x}}{\ext}                                  % Total de extensão do período x
@@ -85,6 +88,7 @@
     } % Conta as horas do curso
 
     \addtocounter{horasAT}{\value{horasAT\the\value{x}}}                % Total Teórico - AT
+    
     \addtocounter{horasAP}{\value{horasAP\the\value{x}}}                % Total Prático - AP
     \addtocounter{horasP}{\value{horasP\the\value{x}}}                  % Total presencial
     \addtocounter{horasANP}{\value{horasANP\the\value{x}}}              % Total não-presencial (ANP)
@@ -98,9 +102,3 @@
 }%
 \makeatother
 
-
-
-
-
-
-    
