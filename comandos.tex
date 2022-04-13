@@ -11,6 +11,44 @@
 % Coloca um checkmark caso a disciplina seja extensionista:
 \newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Utilizado nas tabelas das unidades curriculares dos períodos
 
+% Escreve a área da optativa
+\newcommand{\optativa}[1]{
+    \ifnum #1 = 21
+        {Controle e automação}
+    \else
+        \ifnum #1 = 22
+            {Trilha de Computação}
+        \else
+            \ifnum #1 = 23
+                {Trilha de Eletrônica}
+            \else
+                \ifnum #1 = 24
+                    {Trilha de Eletrotécnica}
+                \else
+                    \ifnum #1 = 31
+                        {Optativas de Filosofia e Hitória}
+                    \else
+                        \ifnum #1 = 32
+                            {Optativas de Economia, Adminstração e Empreendedorismo}
+                        \else    
+                            \ifnum #1 = 33
+                                {Optativas de Comunicação e Linguagem}
+                            \else
+                                \ifnum #1 = 41
+                                    {Optativas de Ciências do Ambiente}
+                                \else
+                                    !Erro!
+                                \fi
+                            \fi
+                        \fi
+                    \fi
+                \fi
+            \fi
+        \fi
+    \fi
+
+}
+
 % Escreve o período por extenso
 \newcommand{\pernum}[1]{% \pernum{<número do período de 1 à 10>}
     \ifnum #1 = 1
@@ -95,29 +133,101 @@
     \end{tabularx}    
 }	
 
+% Imprime a planilha de trilha ou Optativa
+\newcommand{\tabelaTrilha}[2]{% \tabelaTrilha{<número da Optativa de 21 à 49>}{<arquivo csv>}
+    
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+
+        % Primeira linha:
+    	\multicolumn{3}{c||}{\bfseries \optativa{#1}}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\midrule
+
+        % Variáveis da tabela em negrito:
+    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total\\
+    	\midrule
+    
+        \csvreader[ head to column names,
+                    separator=pipe,
+                    %before first line=\\\rowcolor{gray!10},                 
+                    late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+                    filter test=\ifnumequal{\periodo}{#1}]%
+                    {#2}{}%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+
+    	\midrule
+
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        
+        % \midrule
+        
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária presencial total:} & \bfseries \the\value{horasP#1}\\
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária não-presencial total:} & \bfseries \the\value{horasANP#1}\\
+    	% \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP#1}\\
+
+    	\bottomrule  
+
+    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais}\\	
+    \end{tabularx}  
+}  
+
+
 % Imprime as ementas de um período
 \newcommand{\imprimeEmentas}[2]{% % \imprimeEmentas{<número do período de 1 à 10>}{<arquivo csv>}
     \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
 	
 		\begin{quadro}[!ht]
+            \footnotesize
 			\centering
 			\caption{Dados estruturais da unidade curricular de \nome}
 			\label{qua:uc\codigo}
 			\begin{tabularx}{\textwidth}{|c|>{\centering}m{4cm}|c|c|}
             %\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
 				\hline
-				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \Large \nome \vspace{5pt}}\\ \hline\hline				
-				\cellcolor[HTML]{C0C0C0}Período                                                 & \hyperref[tab:per\periodo]{\pernum{\periodo}}			& \cellcolor[HTML]{C0C0C0}Código			& \codigo		\\ \hline
-				\cellcolor[HTML]{C0C0C0}Referência na matriz                                    & \referencia		& \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		\\ \hline
-				\cellcolor[HTML]{C0C0C0}Área do Conhecimento                                    & \areaConhecimento	& \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	\\ \hline				
-				\cellcolor[HTML]{C0C0C0}Extensionista 											& \ifext{não}{sim}  & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma       \\ \hline\hline
-				\multirow{4}{*}{\bfseries Carga Horária}     & \multirow{2}{*}{\bfseries Presencial} & Teórica - AT  & \chTeorica{} h  \\ \cline{3-4}
-				& & Prática - AP & \chPratica{} h\\ \cline{2-4}
-				& \multicolumn{2}{c|}{\bfseries Não Presencial - ANP} & \anp{} h\\ \hline
+				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \nome \vspace{5pt}}\\ \hline\hline				
+				\cellcolor[HTML]{C0C0C0}Período                 & \hyperref[tab:per\periodo]{\pernum{\periodo}}			    & \cellcolor[HTML]{C0C0C0}Código			& \codigo		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Referência na matriz    & \referencia		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaConhecimento	                                        & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
+				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
+				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Não Presencial - ANP}                                                    & \anp{} h          \\ \hline
 
-				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		\\ \hline\hline
-				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			\\ \hline
-				\multicolumn{4}{|>{\hsize=\hsize}X|}{\ementa}                                                                                                                   \\ \hline
+				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		            \\ \hline\hline
+				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			            \\ \hline
+				\multicolumn{4}{|>{\hsize=\hsize}X|}{\ementa}                                                                                                                               \\ \hline
+			\end{tabularx}
+			\fonte{Autoria própria}
+		\end{quadro}
+	
+	}
+}
+
+% Imprime as ementas de optativas
+\newcommand{\imprimeEmentasOpt}[2]{% % \imprimeEmentas{<número do período de 21 à 49>}{<arquivo csv>}
+    \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
+	
+		\begin{quadro}[!ht]
+            \footnotesize
+			\centering
+			\caption{Dados estruturais da unidade curricular optativa de \nome}
+			\label{qua:uc\codigo}
+			\begin{tabularx}{\textwidth}{|c|>{\centering}m{4cm}|c|c|}
+            %\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|}
+				\hline
+				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \nome \vspace{5pt}}\\ \hline\hline				
+				\cellcolor[HTML]{C0C0C0}Tipo de Optativa        & \optativa{\periodo}			        & \cellcolor[HTML]{C0C0C0}Código			& \codigo		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Referência na matriz    & \referencia		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaConhecimento	                                        & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
+				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
+				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Não Presencial - ANP}                                                    & \anp{} h          \\ \hline
+
+				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		            \\ \hline\hline
+				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			            \\ \hline
+				\multicolumn{4}{|>{\hsize=\hsize}X|}{\ementa}                                                                                                                               \\ \hline
 			\end{tabularx}
 			\fonte{Autoria própria}
 		\end{quadro}
