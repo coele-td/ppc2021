@@ -173,7 +173,7 @@
 }  
 
 % Imprime a planilha Optativas de humanas
-\newcommand{\tabelaOptHum}[2]{% \tabelaTrilha{<número da Optativa de 21 à 49>}{<arquivo csv>}
+\newcommand{\tabelaOptHum}[2]{% \tabelaOptHum{<número da Optativa de 21 à 49>}{<arquivo csv>}
     
     \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
 
@@ -196,6 +196,45 @@
     	\midrule
 
         \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        
+        % \midrule
+        
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária presencial total:} & \bfseries \the\value{horasP#1}\\
+        % \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária não-presencial total:} & \bfseries \the\value{horasANP#1}\\
+    	% \rowcolor{white}\multicolumn{6}{r}{\bfseries Carga horária total:} & \bfseries \the\value{horasP#1}\\
+
+    	\bottomrule  
+
+    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais}\\	
+    \end{tabularx}  
+}  
+
+% Imprime a planilha do ciclo de humanidades humanas
+\newcommand{\tabelaHum}[1]{% \tabelaHum{<arquivo csv>}
+    
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+
+        % Primeira linha:
+    	\multicolumn{3}{c||}{\bfseries Unidade Curricular}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\midrule
+
+        % Variáveis da tabela em negrito:
+    	\bfseries Unidade Curricular & \bfseries Área & \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total\\
+    	\midrule
+    
+        \csvreader[ head to column names,
+                    separator=pipe,
+                    %before first line=\\\rowcolor{gray!10},                 
+                    late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+                    filter expr={test{\ifnumgreater{\humanidades}{0}} and test{\ifnumcomp{\periodo}{<}{12}} }]%
+                    {#1}{}%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaHumanas	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+
+    	\midrule
+
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasH:AT} & \bfseries \the\value{horasH:AP} & \bfseries \the\value{horasH:ANP} & \bfseries \the\value{horasH:T}\\
         
         % \midrule
         
@@ -329,7 +368,19 @@
     
 % }
 
-%Retorna a percentagem dos segundo argumento (#2) em relação ao terceiro (#3), o primeiro parâmetro (#1) é opcional e representa as casas decimais (padrão = 2)
+%Retorna a percentagem do segundo argumento (#2) em relação ao terceiro (#3), o primeiro parâmetro (#1) é opcional e representa as casas decimais (padrão = 2)
 \newcommand{\percentagem}[3][2]{\FPset\tempval{0}\FPeval{\tempval}{round(100*#2/#3,#1)}$\tempval$\%}
 
 
+\newcommand{\dadoCHT}[1]{
+    \csvreader[ 
+        head to column names, 
+        separator=pipe                
+    ]{Dados/unidadesCurriculares.csv}{}{%
+        \ifthenelse{\equal{\referencia}{#1}}
+            {\chtotal}  % True
+            {{}}%         % False
+        %\chtotal #1,
+    }
+
+}

@@ -12,10 +12,15 @@
 \newcounter{horasANP}	% Contador das horas não-presenciais do curso
 \setcounter{horasANP}{0} % O Contador deve ser zerado
 
+\newcounter{horasOPT}	% Contador das horas de optativas
+\setcounter{horasOPT}{0} % O Contador deve ser zerado
+
+\newcounter{horasOBG}	% Contador das horas de obrigatórias
+\setcounter{horasOBG}{0} % O Contador deve ser zerado
+
 \newcounter{horasT}	% Contador das horas totais do curso
 \setcounter{horasT}{0} % O Contador deve ser zerado
 
-% Contatador genérico de horas totais para comandos
 \newcounter{horasEXT}	% Contador das horas extensionistas do curso
 \setcounter{horasEXT}{0} % O Contador deve ser zerado
 
@@ -30,6 +35,15 @@
 
 \newcounter{horasH}	% Contador das horas de humanidades do curso
 \setcounter{horasH}{0} % O Contador deve ser zerado
+
+\newcounter{horasUCEXT}	% Contador das horas de disciplinas extensionistas 
+\setcounter{horasUCEXT}{0} % O Contador deve ser zerado
+
+\newcounter{horasCEXT}	% Contador das horas de atividades complementares de extensão
+\setcounter{horasCEXT}{0}  % O Contador deve ser zerado
+
+\newcounter{horasEST}	% Contador das horas de estágio
+\setcounter{horasEST}{0}  % O Contador deve ser zerado
 
 
 % Contador de horas dos períodos
@@ -52,6 +66,12 @@
 
     \newcounter{horasANP\the\value{x}}	% Contador das Atividades Presenciais do período
     \setcounter{horasANP\the\value{x}}{0} % O Contador deve ser zerado
+
+    \newcounter{horasOPT\the\value{x}}	% Contador das Optativas do período
+    \setcounter{horasOPT\the\value{x}}{0} % O Contador deve ser zerado
+
+    \newcounter{horasOBG\the\value{x}}	% Contador das Optativas do período
+    \setcounter{horasOBG\the\value{x}}{0} % O Contador deve ser zerado
 
     \newcounter{horasT\the\value{x}}	% Contador das horas totais do período
     \setcounter{horasT\the\value{x}}{0} % O Contador deve ser zerado
@@ -79,11 +99,15 @@
         \addtocounter{y}{\chTeorica}
         \addtocounter{horasP\the\value{x}}{\the\value{y}}                 % Atividades presenciais (AT + AP) do período x
         \addtocounter{horasANP\the\value{x}}{\anp}                                  % ANP do período x
+        
         \addtocounter{horasT\the\value{x}}{\chtotal}                                % Total do período x
         \addtocounter{horasEXT\the\value{x}}{\ext}                                  % Total de extensão do período x
         \ifcsvstrcmp{\tipo}{B}{\addtocounter{horasB\the\value{x}}{\chtotal}}{}      % Total do núcleo básico do período x
         \ifcsvstrcmp{\tipo}{P}{\addtocounter{horasPR\the\value{x}}{\chtotal}}{}     % Total do núcleo Profissionalizante  do período x
         \ifcsvstrcmp{\tipo}{PE}{\addtocounter{horasPE\the\value{x}}{\chtotal}}{}    % Total do núcleo Profissionalizante Específico do período x
+        \ifcsvstrcmp{\opt}{optativa}{\addtocounter{horasOPT\the\value{x}}{\chtotal}}{}    % Total de optativas do período x
+        \ifcsvstrcmp{\opt}{obrigatoria}{\addtocounter{horasOBG\the\value{x}}{\chtotal}}{}    % Total de obrigatórias do período x
+        \ifcsvstrcmp{\opt}{estagio}{\addtocounter{horasEST}{\chtotal}}{}            % Total de estágio
         \addtocounter{horasH\the\value{x}}{\humanidades}                            % Total de humanidades do período x
     } % Conta as horas do curso
 
@@ -98,8 +122,47 @@
         \addtocounter{horasB}{\value{horasB\the\value{x}}}                  % Total básico
         \addtocounter{horasPR}{\value{horasPR\the\value{x}}}                % Total Profissionalizante
         \addtocounter{horasPE}{\value{horasPE\the\value{x}}}                % Total Profissionalizante Específico
-        \addtocounter{horasH}{\value{horasH\the\value{x}}}                  % Total humanidades
+        \addtocounter{horasH}{\value{horasH\the\value{x}}}                  % Total humanidades       
+        \addtocounter{horasOBG}{\value{horasOBG\the\value{x}}}              % Total Obrigatórias
+        \addtocounter{horasOPT}{\value{horasOPT\the\value{x}}}              % Total Optativas
+        \ifnum \value{x} <11 
+            \addtocounter{horasUCEXT}{\value{horasEXT\the\value{x}}}        % Total unidades curriculares extensionistas
+            
+        \fi
+        \ifnum \value{x} =11 
+            \addtocounter{horasCEXT}{\value{horasEXT\the\value{x}}}
+        \fi
+
+
     \fi
 }%
+
+\newcounter{horasUC}	% Contador das horas de Unidades Curriculares
+\setcounter{horasUC}{\value{horasOBG}} % O Contador iniciado com o total de unidades curriculares obrigatórias
+\addtocounter{horasUC}{\value{horasOPT}} % Adicionado o valor da carga horária de optativas 
+
 \makeatother
+
+% Contador de horas de humanidades
+
+
+\newcounter{horasH:AT}	% Contador das horas de Unidades Curriculares
+\setcounter{horasH:AT}{0} % O Contador deve ser zerado
+\newcounter{horasH:AP}	% Contador das horas de Unidades Curriculares
+\setcounter{horasH:AP}{0} % O Contador deve ser zerado
+\newcounter{horasH:ANP}	% Contador das horas de Unidades Curriculares
+\setcounter{horasH:ANP}{0} % O Contador deve ser zerado
+\newcounter{horasH:T}	% Contador das horas de Unidades Curriculares
+\setcounter{horasH:T}{0} % O Contador deve ser zerado
+\csvreader[ head to column names,
+            separator=pipe, 
+            filter expr={test{\ifnumgreater{\humanidades}{0}} and test{\ifnumcomp{\periodo}{<}{12}} }]%
+            {Dados/unidadesCurriculares.csv}{}%
+    	    {
+                \addtocounter{horasH:AT}{\chTeorica}
+                \addtocounter{horasH:AP}{\chPratica}
+                \addtocounter{horasH:ANP}{\anp}
+                \addtocounter{horasH:T}{\chtotal}
+
+            }%
 
