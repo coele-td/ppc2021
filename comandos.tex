@@ -287,7 +287,7 @@
 }
 
 % Imprime as ementas de optativas
-\newcommand{\imprimeEmentasOpt}[2]{% % \imprimeEmentas{<número do período de 21 à 49>}{<arquivo csv>}
+\newcommand{\imprimeEmentasOpt}[2]{% % \imprimeEmentasOpt{<número do período de 21 à 49>}{<arquivo csv>}
     \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
 	
 		\begin{quadro}[!ht]
@@ -300,7 +300,7 @@
 				\hline
 				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \nome \vspace{5pt}}\\ \hline\hline				
 				\cellcolor[HTML]{C0C0C0}Tipo de Optativa        & \optativa{\periodo}			        & \cellcolor[HTML]{C0C0C0}Código			& \codigo		    \\ \hline
-				\cellcolor[HTML]{C0C0C0}Referência na matriz    & \referencia		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Referência na matriz    & N/A		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaConhecimento	                                        & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
 				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
@@ -318,7 +318,7 @@
 }
 
 % Imprime as ementas de optativas de Humanidades
-\newcommand{\imprimeEmentasHum}[2]{% % \imprimeEmentas{<número do período de 21 à 49>}{<arquivo csv>}
+\newcommand{\imprimeEmentasHum}[2]{% % \imprimeEmentasHum{<número do período de 21 à 49>}{<arquivo csv>}
     \csvreader[head to column names, separator=pipe, filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
 	
 		\begin{quadro}[!ht]
@@ -331,7 +331,7 @@
 				\hline
 				\multicolumn{4}{|>{\centering}X|}{\cellcolor[HTML]{656565}\bfseries \color{white} \vspace{5pt} \nome \vspace{5pt}}\\ \hline\hline				
 				\cellcolor[HTML]{C0C0C0}Tipo de Optativa        & \optativa{\periodo}			        & \cellcolor[HTML]{C0C0C0}Código			& \codigo		    \\ \hline
-				\cellcolor[HTML]{C0C0C0}Referência na matriz    & \referencia		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
+				\cellcolor[HTML]{C0C0C0}Referência na matriz    & N/A		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaHumanas	                                            & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
 				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
@@ -385,6 +385,5 @@
             {\chtotal}  % True
             {{}}%         % False
         %\chtotal #1,
-    }
-
-}
+    }%
+}%
