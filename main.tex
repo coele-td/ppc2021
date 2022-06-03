@@ -130,7 +130,7 @@ english,french,spanish,brazil]{abntex2}
 % \renewcommand\theadfont{\bfseries}
 % \renewcommand\theadgape{\Gape[4pt]}
 % \renewcommand\cellgape{\Gape[4pt]}
-
+\usepackage[ddmmyyyy]{datetime}
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Outras configurações:
 
@@ -209,6 +209,7 @@ english,french,spanish,brazil]{abntex2}
     \pagenumbering{gobble} % Remove a visualização da numeração das páginas e reinicia em 1 
     \clearpage
     \thispagestyle{empty}
+    \input{identificacao.tex}
     \imprimircapa
     \clearpage
     \pagenumbering{arabic}% Numeração arábica (e reinicia em 1)
