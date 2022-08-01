@@ -123,7 +123,7 @@ As instalações do campus Toledo iniciaram seu funcionamento nas dependências 
 
 As atividades de ensino no campus Toledo são realizadas nos blocos A, C, E e nos laboratórios anexos à quadra de esportes. As instalações do curso de Engenharia Eletrônica se concentram no Bloco A que possui como infraestrutura 3381 m\textsuperscript{2} dispostas em quatro pavimentos constituídos de laboratórios, salas de aula e áreas administrativas descritos no \autoref{qua:blocoa}. Eventualmente, outros ambientes dos blocos C e E são empregados nas atividades de ensino. Uma lista completa dos ambientes de ensino e aprendizagem do campus Toledo pode ser encontrada na \autoref{sec:amb}.
 
-\begin{quadro}
+\begin{table}
     \centering\small
 	\caption[Distribuição dos ambientes no campus Toledo – Bloco A]{Distribuição dos ambientes no campus Toledo – Bloco A}
     \begin{tabularx}{\textwidth}{c >{\centering\arraybackslash}X  c}
@@ -164,7 +164,7 @@ As atividades de ensino no campus Toledo são realizadas nos blocos A, C, E e no
 
         \end{tabularx}
     \label{qua:blocoa}
-\end{quadro}
+\end{table}
 
 Cada sala de aula é equipada com mesas individuais, ventiladores ou ar condicionado, projetor multimídia e quadro branco. Além disso, a COGETI pode disponibilizar equipamentos audio-visuais para a gravação ou transmissão de aulas e apresentações.
 
@@ -177,7 +177,7 @@ Os discentes ainda podem ter acesso a ambientes profissionais multiusuários des
 
 Nos Quadros \ref{qua:labsgeral} e \ref{qua:labsgeraldisc} são listados os Laboratórios de Ensino e Informática compartilhados atualmente disponibilizados para o Corpo Discente do curso de Engenharia Eletrônica.
 
-\begin{quadro}
+\begin{table}
 	\centering\small
 	\caption[Laboratórios de Ensino e Informática]{Laboratórios de Ensino e Informática disponíveis para os discentes do curso de Engenharia Eletrônica}
 	\begin{tabularx}{\textwidth}{ ccc >{\centering\arraybackslash}X }
@@ -192,21 +192,21 @@ Nos Quadros \ref{qua:labsgeral} e \ref{qua:labsgeraldisc} são listados os Labor
 		\bottomrule
 	\end{tabularx}
 	\label{qua:labsgeral}
-\end{quadro}
+\end{table}
 
 \begin{quadro}
 	\centering\small
 	\caption[Disciplinas atendidas pelos laboratórios de Ensino e Informática]{Disciplinas atendidas pelos laboratórios de Ensino e Informática para o curso de Engenharia Eletrônica}
-	\begin{tabularx}{\textwidth}{ c >{\centering\arraybackslash}X }
-		\toprule%
+	\begin{tabularx}{\textwidth}{| c | >{\centering\arraybackslash}X |}
+		\hline%
 		\rowcolor{white}\bfseries Laboratório & \bfseries Disciplinas atendidas \\
-		\midrule
+		\hline
 		\csvreader[	head to column names,
-					late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+					late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}} \hline, 
 					separator=pipe]%
 					{Caps/Quadros/labs.csv}{}%
 					{\lab & \disc }%
-		\bottomrule
+		%\bottomrule
 	\end{tabularx}
 	\label{qua:labsgeraldisc}
 \end{quadro}

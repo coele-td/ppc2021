@@ -89,20 +89,20 @@ A composição do corpo do docente das áreas profissionalizante e profissionali
         \centering
         \caption[Corpo Docente]{Composição e formação do corpo docente da COELE-TD das áreas profissionalizante e profissionalizante específica (em Novembro de 2021)}        
         \label{qua:profs}
-        \begin{tabularx}{\textwidth}{ >{\centering\arraybackslash\small}X >{\centering\arraybackslash\small}X >{\centering\arraybackslash\small}X >{\centering\arraybackslash\small}X}
+        \begin{tabularx}{\textwidth}{| >{\centering\arraybackslash\small}X |> {\centering\arraybackslash\small}X |>{\centering\arraybackslash\small}X |>{\centering\arraybackslash\small}X |}
             \toprule%
             \rowcolor{white}\bfseries Docente & \bfseries Graduação & \bfseries Titulação & \bfseries Regime dee Trabalho\\
             \midrule
             \csvreader[	head to column names,
-                        late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
+                        late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}} \hline, 
                         separator=pipe]%
                         {Caps/Quadros/corpodocente.csv}{}%
                         {\docente & \graduacao & \titulacao & \regime}%
-            \bottomrule
+            %\bottomrule
             \end{tabularx}
     \end{quadro}
 
-    \begin{quadro}
+    \begin{table}
         \centering
         \caption[Titulação do Corpo Docente]{Titulação do corpo docente da COELE-TD (em Novembro de 2021)}        
         \label{qua:titulacao}
@@ -117,5 +117,5 @@ A composição do corpo do docente das áreas profissionalizante e profissionali
                         {\Especialistas & \Mestres & \Doutores }%
             \bottomrule
             \end{tabularx}
-    \end{quadro}
+    \end{table}
 
