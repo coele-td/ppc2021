@@ -1,0 +1,93 @@
+nome|codigo|equivalente|codigovelho
+{Cálculo Diferencial e Integral 1}|ET41B|{Cálculo Diferencial e Integral 1}|ET41B
+{Geometria Analítica e Álgebra Linear}|ET41D|{Geometria Analítica e Álgebra Linear}|ET41D
+{Física 1}|ET41C|{Física 1}|ET41C
+{Computação 1}|ET41G|{Construção de Algoritmos}|ET41F
+{Desenho Técnico}|ET41A|{Desenho Técnico}|ET41A
+{Introdução a Engenharia}|ET41E|{Introdução a Engenharia}|ET41E
+{Cálculo Diferencial e Integral 2}|ET42B|{Cálculo Diferencial e Integral 2}|ET42B
+{Probabilidade e Estatistíca}|ET45C|{Probabilidade e Estatistíca}|ET45C
+{Física 2}|ET42C|{Física 2}|ET42C
+{Fundamentos de Programação}|ET42J|{Fundamentos de Programação}|ET42J
+{Química Básica Teórica}|ET42L|{Química Básica Teórica}|ET42L
+{Química Básica Experimental}|ET42M|{Química Básica Experimental}|ET42M
+{Mecânica Geral 1}|ET42H|{Mecânica Geral 1}|ET42H
+{-}|{-}|{Mecânica Geral 2}|ET43H
+{Cálculo Diferencial e Integral 3}|ET43L|{Cálculo Diferencial e Integral 3}|ET43L
+{Equações Diferenciais Ordinárias}|ET43A|{Equações Diferenciais Ordinárias}|ET43A
+{Física 3}|ET42D|{Física 3}|ET42D
+{Arquitetura e organização de computadores}|ET43M|{Fundamentos de Programação Orientada a Objetos}|ET43I
+{Cálculo Numérico}|ET43F|{Cálculo Numérico}|ET43F
+{Análise de Circuitos Elétricos 1}|ET43J|{Análise de Circuitos Elétricos 1}|ET43J
+{Laboratório de Circuitos Elétricos 1}|ET43K|{Laboratório de Circuitos Elétricos 1}|ET43K
+{-}|{-}|{Princípios de Resistência dos Materiais}|ET44G
+{Cálculo 4B}|ET44H|{Variáveis complexas A}|ET44A
+{Fenômenos de Transporte 1}|ET44E|{Fenômenos de Transporte 1}|ET44E
+{Eletromagnetismo}|ET44C|{Eletromagnetismo}|ET44C
+{Sistemas operacionais}|ET44I|{Estrutura de Dados}|ET44F
+{Eletrônica Analógica 1}|ET44B|{Eletrônica Analógica 1}|ET44B
+{Análise de Circuitos Elétricos 2}|ET44J|{Circuitos Elétricos 2}|ET44D
+{Laboratório de Circuitos Elétricos 2}|ET44K|{Circuitos Elétricos 2}|ET44D
+{Física 4}|ET43C|{Física 4}|ET43C
+{Sinais e Sistemas}|ET45A|{Sinais e Sistemas}|ET45A
+{Medidas e Sensores}|ET45G|{Medidas e Sensores}|ET45G
+{Materiais e Equipamentos Elétricos}|ET43E|{Materiais e Equipamentos Elétricos}|ET43E
+{Eletrônica Analógica 2 }|ET45B|{Eletrônica Analógica 2 }|ET45B
+{Fundamentos de Engenharia de Segurança do Trabalho}|ET45H|{Fundamentos de Engenharia de Segurança do Trabalho}|ET45H
+{Sistemas Digitais}|ET46B|{Sistemas Digitais}|ET46B
+{Controle de Sistemas Lineares 1}|ET46C|{Controle de Sistemas Lineares 1}|ET46C
+{Conversão de Energia 1}|ET46G|{Conversão de Energia 1}|ET46G
+{Instalações Elétricas}|ET46J|{Instalações Elétricas}|ET46J
+{Fundamentos de Sistemas de Comunicação}|ET46I|{Fundamentos de Sistemas de Comunicação}|ET46I
+{Microcontroladores}|ET47D|{Microcontroladores}|ET47D
+{Controle de Sistemas Lineares 2}|ET47C|{Controle de Sistemas Lineares 2}|ET47C
+{Eletrônica de Potência}|ET47B|{Eletrônica de Potência}|ET47B
+{Máquinas e Acionamentos}|ET47H|{Máquinas e Acionamentos}|ET47H
+{Processamento Digital de Sinais}|ET47F|{Processamento Digital de Sinais}|ET47F
+{Sistemas Embarcados}|ET48B|{Sistemas Embarcados}|ET48B
+{Controle Supervisório}|ET48C|{Controle Supervisório}|ET48C
+{Lógica Reconfigurável}|ET48A|{Lógica Reconfigurável}|ET48A
+{Metodologia de Pesquisa}|ET42F|{Metodologia de Pesquisa}|ET42F
+{Trabalho de Conclusão de Curso 1}|ET49A|{Trabalho de Conclusão de Curso 1}|ET49A
+{Trabalho de Conclusão de Curso 2}|ET50A|{Trabalho de Conclusão de Curso 2}|ET50A
+{Estágio Curricular Obrigatório}|ET48E|{Estágio Curricular Obrigatório}|ET48E
+{Controle Digital}|AUT78A|{Controle Digital}|AUT78A
+{Inteligência Artificial Aplicada a Controle e Automação}|AUT78C|{Inteligência Artificial Aplicada a Controle e Automação}|AUT78C
+{Introdução ao Controle Avançado}|AUT78D|{-}|{-}
+{Análise e Projeto de Sistemas Computacionais}|CP78A|{Análise e Projeto de Sistemas Computacionais}|CP78A
+{Inteligência Computacional}|CP78D|{Inteligência Computacional}|CP78D
+{Redes de Comunicação}|CP78E|{Redes de Comunicação}|CP78E
+{Sistemas Operacionais e Programação Concorrente}|CP78G|{Sistemas Operacionais e Programação Concorrente}|CP78G
+{Comunicações ópticas}|ELT78A|{Comunicações ópticas}|ELT78A
+{Laboratório de Processamento Digital de Sinais}|ELT78B|{Laboratório de Processamento Digital de Sinais}|ELT78B
+{Princípios de Comunicações Digitais}|ELT78C|{Princípios de Comunicações Digitais}|ELT78C
+{Engenharia de Microondas}|ELT78D|{Engenharia de Microondas}|ELT78D
+{Instalações Elétricas Industriais}|ET48I|{Instalações Elétricas Industriais}|ET48I
+{Sistemas de Potência}|ET48G|{Sistemas de Potência}|ET48G
+{Geração, Transmissão e Distribuição de Energia Elétrica}|ET48H|{Geração, Transmissão e Distribuição de Energia Elétrica}|ET48H
+{Filosofia da Tecnologia}|HU40A|{Tecnologia e Sociedade}|HU40D
+{História da Tecnologia}|HU40B|{História da técnica e da tecnologia}|HU40B
+{Economia Contemporânea}|HU40C|{Economia}|ET47G
+{Economia Política}|HU40D|{-}|{-}
+{Gestão de projetos}|HU40E|{Gestão de projetos}|ET46A
+{Empreendedorismo}|HU40F|{Empreendedorismo}|ET47A
+{Comunicação Organizacional}|HU40G|{-}|{-}
+{Leitura e Escrita Acadêmica}|HU40H|{Comunicação Linguística}|ET42K
+{Inglês 1}|HU40I|{-}|{-}
+{Inglês 2}|HU40J|{-}|{-}
+{Inglês 3}|HU40K|{-}|{-}
+{Inglês 4}|HU40L|{-}|{-}
+{Inglês 5}|HU40M|{-}|{-}
+{Libras}|ID78A|Libras 1 e 2|ID78A e ID78B
+{Francês para Fins Acadêmicos}|HU40P|{-}|{-}
+{Engenharia e Gestão Financeira I}|HU40N|{-}|{-}
+{Engenharia e Gestão Financeira II}|HU40O|{-}|{-}
+{Estudos Culturais, Relações Étnico-Raciais e Direitos Humanos}|HU40P|{-}|{-}
+{Engenharia de produto}|HU40Q|{-}|{-}
+{Espanhol para Engenharias}|HU40R|{-}|{-}
+{Espanhol para Engenharias II}|HU40S|{-}|{-}
+{Prática de Escrita para Engenharias}|HU40T|{-}|{-}
+{\textit{Engineering Design Process}}|EDP|{-}|{-}
+{Ciências do Ambiente}|CA78A|{Ciências do Ambiente}|CA78A
+{Energia e meio ambiente}|CA78B|{Energia e meio ambiente}|CA78B
+{Desenvolvimento Sustentável}|CA78C|{Desenvolvimento Sustentável}|CA78C

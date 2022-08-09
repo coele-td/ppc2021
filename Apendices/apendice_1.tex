@@ -1,4 +1,32 @@
 \chapter{Apêndice 1}
 \label{apen:apen1}
 
-\lipsum
+\begin{center}
+    \begin{longtable}{p{6cm}|p{6cm}}
+    \caption{Tabela de equivalência de unidades curriculares da grade 44.} \label{tab:long} \\
+    
+    \hline \multicolumn{1}{p{6cm}|}{\textbf{Grade 44}} & \multicolumn{1}{p{6cm}}{\textbf{Grade nova}} \\ \hline 
+    \endfirsthead
+    
+    \multicolumn{2}{c}%
+    {{\bfseries \tablename\ \thetable{} -- Continuação}} \\
+    \hline \multicolumn{1}{p{6cm}|}{\textbf{Grade 44}} & \multicolumn{1}{p{6cm}}{\textbf{Grade nova}} \\ \hline
+    \endhead
+    
+    \hline \multicolumn{2}{|r|}{{Continua}} \\ \hline
+    \endfoot
+    
+    \hline \hline
+    \endlastfoot
+    
+    \csvreader[ head to column names,
+                    separator=pipe,
+                    %before first line=\\\rowcolor{gray!10},                 
+                    late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}]%
+                    {Dados/uc_equivalentes_44.csv}{}%
+    	{ \equivalente	&  \nome}%
+    
+    \end{longtable}
+    \end{center}
+    
+    \end{document}
