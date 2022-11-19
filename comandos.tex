@@ -97,14 +97,14 @@
 % Imprime a planilha do período
 \newcommand{\tabelaPeriodo}[2]{% \tabelaPeriodo{<número do período de 1 à 10>}{<arquivo csv>}
     
-    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccc}\toprule
 
         % Primeira linha:
-    	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries \pernum{#1} Período}	&	\multicolumn{3}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
-    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total$^4$\\
+    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries Total$^3$\\
     	\midrule
     
         \csvreader[ head to column names,
@@ -113,11 +113,11 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
                     {#2}{}%
-    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chtotal }%
 
     	\midrule
 
-        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1}  & \bfseries \the\value{horasT#1}\\
         
         % \midrule
         
@@ -127,24 +127,23 @@
 
     	\bottomrule  
 
-    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
-    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
-    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais - Representa o quanto do total pode ser não presencial}\\
-        \multicolumn{7}{l}{$^4$\tiny Total = AT + AP}\\	
+    	\multicolumn{6}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{6}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+        \multicolumn{6}{l}{$^3$\tiny Total = AT + AP}\\	
     \end{tabularx}    
 }	
 
 % Imprime a planilha de trilha ou Optativa
 \newcommand{\tabelaTrilha}[2]{% \tabelaTrilha{<número da Optativa de 21 à 49>}{<arquivo csv>}
     
-    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccc}\toprule
 
         % Primeira linha:
-    	\multicolumn{3}{c||}{\bfseries \optativa{#1}}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries \optativa{#1}}	&	\multicolumn{3}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
-    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total$^4$\\
+    	\bfseries Unidade Curricular & \bfseries Área do Conhecimento	& \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries Total$^3$\\
     	\midrule
     
         \csvreader[ head to column names,
@@ -153,11 +152,11 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
                     {#2}{}%
-    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaConhecimento	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chtotal }%
 
     	\midrule
 
-        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
         
         % \midrule
         
@@ -167,24 +166,23 @@
 
     	\bottomrule  
 
-    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
-    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
-    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais - Representa o quanto do total pode ser não presencial}\\
-        \multicolumn{7}{l}{$^4$ \tiny Total = AT + AP}\\	
+    	\multicolumn{6}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{6}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+        \multicolumn{6}{l}{$^3$ \tiny Total = AT + AP}\\	
     \end{tabularx}  
 }  
 
 % Imprime a planilha Optativas de humanas
 \newcommand{\tabelaOptHum}[2]{% \tabelaOptHum{<número da Optativa de 21 à 49>}{<arquivo csv>}
     
-    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccc}\toprule
 
         % Primeira linha:
-    	\multicolumn{3}{c||}{\bfseries \optativa{#1}}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries \optativa{#1}}	&	\multicolumn{3}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
-    	\bfseries Unidade Curricular & \bfseries Área & \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total$^4$\\
+    	\bfseries Unidade Curricular & \bfseries Área & \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries Total$^3$\\
     	\midrule
     
         \csvreader[ head to column names,
@@ -193,11 +191,11 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter test=\ifnumequal{\periodo}{#1}]%
                     {#2}{}%
-    	{\hyperref[qua:uc\codigo]{\nome}	& \areaHumanas	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaHumanas	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chtotal }%
 
     	\midrule
 
-        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasANP#1} & \bfseries \the\value{horasT#1}\\
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasAT#1} & \bfseries \the\value{horasAP#1} & \bfseries \the\value{horasT#1}\\
         
         % \midrule
         
@@ -207,24 +205,23 @@
 
     	\bottomrule  
 
-    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
-    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
-    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais - Representa o quanto do total pode ser não presencial}\\
-        \multicolumn{7}{l}{$^4$ \tiny Total = AT + AP}\\
+    	\multicolumn{6}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{6}{l}{$^2$ \tiny AP - Atividades Práticas}\\    	
+        \multicolumn{6}{l}{$^3$ \tiny Total = AT + AP}\\
     \end{tabularx}  
 }  
 
 % Imprime a planilha do ciclo de humanidades humanas
 \newcommand{\tabelaHum}[1]{% \tabelaHum{<arquivo csv>}
     
-    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||cccc}\toprule
+    \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X >{\centering\arraybackslash}X c||ccc}\toprule
 
         % Primeira linha:
-    	\multicolumn{3}{c||}{\bfseries Unidade Curricular}	&	\multicolumn{4}{c}{\bfseries Carga horária (h)}\\
+    	\multicolumn{3}{c||}{\bfseries Unidade Curricular}	&	\multicolumn{3}{c}{\bfseries Carga horária (h)}\\
     	\midrule
 
         % Variáveis da tabela em negrito:
-    	\bfseries Unidade Curricular & \bfseries Área & \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries ANP$^3$ & \bfseries Total$^4$\\
+    	\bfseries Unidade Curricular & \bfseries Área & \bfseries Extensionista & \bfseries AT$^1$ & \bfseries AP$^2$& \bfseries Total$^3$\\
     	\midrule
     
         \csvreader[ head to column names,
@@ -233,11 +230,11 @@
                     late after line=\csvifoddrow{\\}{\\\rowcolor{gray!10}}, 
                     filter expr={test{\ifnumgreater{\humanidades}{0}} and test{\ifnumcomp{\periodo}{<}{12}} }]%
                     {#1}{}%
-    	{\hyperref[qua:uc\codigo]{\nome}	& \areaHumanas	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \anp	& \chtotal }%
+    	{\hyperref[qua:uc\codigo]{\nome}	& \areaHumanas	& \ifext{-}{\checkmark} & \chTeorica	& \chPratica	& \chtotal }%
 
     	\midrule
 
-        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasH:AT} & \bfseries \the\value{horasH:AP} & \bfseries \the\value{horasH:ANP} & \bfseries \the\value{horasH:T}\\
+        \rowcolor{white}\multicolumn{3}{r}{\bfseries Totais:} & \bfseries \the\value{horasH:AT} & \bfseries \the\value{horasH:AP} & \bfseries \the\value{horasH:T}\\
         
         % \midrule
         
@@ -247,10 +244,9 @@
 
     	\bottomrule  
 
-    	\multicolumn{7}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
-    	\multicolumn{7}{l}{$^2$ \tiny AP - Atividades Práticas}\\
-    	\multicolumn{7}{l}{$^3$ \tiny ANP - Atividades não-presenciais - Representa o quanto do total pode ser não presencial}\\
-        \multicolumn{7}{l}{$^4$ \tiny Total = AT + AP}\\	
+    	\multicolumn{6}{l}{$^1$ \tiny AT - Atividades Teóricas}\\
+    	\multicolumn{6}{l}{$^2$ \tiny AP - Atividades Práticas}\\
+        \multicolumn{6}{l}{$^3$ \tiny Total = AT + AP}\\	
     \end{tabularx}  
 }  
 
@@ -272,9 +268,9 @@
 				\cellcolor[HTML]{C0C0C0}Referência na matriz    & \referencia		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaConhecimento	                                        & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
-				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Não Presencial - ANP}                                                    & \anp{} h          \\ \hline
+				\multirow{2}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4} \hline
+				                                                
 
 				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		            \\ \hline\hline
 				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			            \\ \hline
@@ -303,9 +299,9 @@
 				\cellcolor[HTML]{C0C0C0}Referência na matriz    & N/A		                                        & \cellcolor[HTML]{C0C0C0}Pré-requisito		& \prereq		    \\ \hline
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaConhecimento	                                        & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
-				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Não Presencial - ANP}                                                    & \anp{} h          \\ \hline
+				\multirow{2}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
+				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}\hline
+				                                                
 
 				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		            \\ \hline\hline
 				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			            \\ \hline
@@ -335,8 +331,8 @@
 				\cellcolor[HTML]{C0C0C0}Área do Conhecimento    & \areaHumanas	                                            & \cellcolor[HTML]{C0C0C0}Modalidade 		& \modalidade	    \\ \hline				
 				\cellcolor[HTML]{C0C0C0}Extensionista 			& \ifext{não}{sim}                                          & \cellcolor[HTML]{C0C0C0}Idioma        	& \idioma           \\ \hline\hline
 				\multirow{3}{*}{\bfseries Carga Horária}        & \multicolumn{2}{c|}{\bfseries Atividade Teórica - AT}                                                  & \chTeorica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}
-				                                                & \multicolumn{2}{c|}{\bfseries Não Presencial - ANP}                                                    & \anp{} h          \\ \hline
+				                                                & \multicolumn{2}{c|}{\bfseries Atividade Prática - AP}                                                  & \chPratica{} h    \\ \cline{2-4}\hline
+				                                                
 
 				\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Carga horária total: \chtotal{} h}}  																		            \\ \hline\hline
 				\multicolumn{4}{|>{\centering}X|}{\bfseries \vspace{5pt} Ementa \vspace{5pt}}                                                                       			            \\ \hline
