@@ -101,6 +101,10 @@ english,french,spanish,brazil]{abntex2}
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %insira novos pacotes aqui:
 %\usepackage[section]{placeins}
+\usepackage{fp}
+\usepackage{siunitx}
+\gdef\numdec{3}
+
 \usepackage{longtable}
 \usepackage{booktabs} % Estilos de linha para tabelas
 \usepackage{enumitem} % Para formatar as listas
@@ -112,9 +116,7 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{cellspace}
 \usepackage{csvsimple} % Para ler arquivos CSV
 
-\usepackage{fp}
-\usepackage{siunitx}
-\gdef\numdec{3}
+
 
 % Configura o modo matemático para substituir o ponto por vírgula
 \mathchardef\period=\mathcode`.
