@@ -5,95 +5,91 @@
 %   Muitos comandos utilizam diretamente o arquivo Dados/unidadesCurriculares.csv
 % 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Escreve o nome por extenso da UTFPR:
 \newcommand{\utf}{Universidade Tecnológica Federal do Paraná}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Coloca um checkmark caso a disciplina seja extensionista:
 \newcommand{\ifext}[2]{\ifcsvstrcmp{\ext}{0}{#1}{#2}} % Utilizado nas tabelas das unidades curriculares dos períodos
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Escreve a área da optativa
 \newcommand{\optativa}[1]{
     \ifnum #1 = 21
-        {Controle e automação}
-    \else
-        \ifnum #1 = 22
-            {Trilha de Computação}
-        \else
-            \ifnum #1 = 23
-                {Trilha de Eletrônica}
-            \else
-                \ifnum #1 = 24
-                    {Trilha de Eletrotécnica}
-                \else
-                    \ifnum #1 = 31
-                        {Optativas de Humanidades}
-                    \else
-                        \ifnum #1 = 32
-                            {Metodologia de Ensino Inovador da UTFPR}
-                        \else    
-                            \ifnum #1 = 33
-                                {Não definido}
-                            \else
-                                \ifnum #1 = 41
-                                    {Optativas de Ciências do Ambiente}
-                                \else
-                                    !Erro!
-                                \fi
-                            \fi
-                        \fi
-                    \fi
-                \fi
-            \fi
-        \fi
-    \fi
-
+        Controle e automação\fi
+    \ifnum #1 = 22
+        Trilha de Computação\fi
+    \ifnum #1 = 23
+        Trilha de Eletrônica\fi
+    \ifnum #1 = 24
+        Trilha de Eletrotécnica\fi
+    \ifnum #1 = 31
+        Optativas de Humanidades\fi
+    \ifnum #1 = 32
+        Metodologia de Ensino Inovador da UTFPR\fi
+    \ifnum #1 = 33
+        Não definido\fi
+    \ifnum #1 = 41
+        Optativas de Ciências do Ambiente\fi
 }
+% Este comando define a macro \optativa, que aceita um argumento numérico e retorna uma string representando a categoria de disciplina correspondente.
+% Os números fornecidos como argumento representam períodos de disciplinas na coluna "período" da planilha unidadesCurriculares.csv localizada na pasta Dados.
+% Quando o período é maior que 10, o valor do período indica uma categoria específica de disciplina, conforme mostrado neste comando.
+% 
+% Neste código, cada condição é verificada separadamente usando o comando \ifnum, seguido pelo valor correspondente da categoria de disciplina e, em seguida, fechado com \fi.
+% 
+% Para adicionar mais categorias, siga os passos abaixo:
+% 
+% 1. Adicione uma nova linha após as categorias existentes, usando o mesmo formato.
+% 2. Substitua o número (#1) no \ifnum pelo valor numérico correspondente à nova categoria.
+% 3. Substitua o texto entre chaves {} pelo nome da nova categoria de disciplina e adicione \fi no final da linha.
+% 
+% Por exemplo, para adicionar uma categoria "Exemplo" com o valor numérico 42, adicione a seguinte linha:
+% \ifnum #1 = 42 Exemplo\fi
+%
+% Certifique-se de que os valores numéricos usados sejam únicos e não se sobreponham aos valores existentes.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Escreve o período por extenso
 \newcommand{\pernum}[1]{% \pernum{<número do período de 1 à 10>}
-    \ifnum #1 = 1
-        Primeiro
-    \else
+    \ifthenelse{#1 < 1 \OR #1 > 10}{%
+        !Erro!% Mensagem de erro para valores fora do intervalo de 1 a 10
+    }{%
+        \ifnum #1 = 1
+            Primeiro\fi
         \ifnum #1 = 2
-            Segundo
-        \else
-            \ifnum #1 = 3
-                Terceiro
-            \else
-                \ifnum #1 = 4
-                    Quarto
-                \else
-                    \ifnum #1 = 5
-                        Quinto
-                    \else
-                        \ifnum #1 = 6
-                            Sexto
-                        \else
-                            \ifnum #1 = 7
-                                Sétimo
-                            \else
-                                \ifnum #1 = 8
-                                    Oitavo
-                                \else
-                                    \ifnum #1 = 9
-                                        Nono
-                                    \else
-                                        \ifnum #1 = 10
-                                            Décimo
-                                        \else
-                                            !Erro!
-                                        \fi
-                                    \fi
-                                \fi
-                            \fi
-                        \fi
-                    \fi
-                \fi
-            \fi
-        \fi
-    \fi
+            Segundo\fi
+        \ifnum #1 = 3
+            Terceiro\fi
+        \ifnum #1 = 4
+            Quarto\fi
+        \ifnum #1 = 5
+            Quinto\fi
+        \ifnum #1 = 6
+            Sexto\fi
+        \ifnum #1 = 7
+            Sétimo\fi
+        \ifnum #1 = 8
+            Oitavo\fi
+        \ifnum #1 = 9
+            Nono\fi
+        \ifnum #1 = 10
+            Décimo\fi
+    }
 }
+% Este comando define a macro \pernum, que aceita um argumento numérico e retorna o período por extenso correspondente (de 1 a 10).
+% Utiliza-se o pacote ifthen para verificar se o valor fornecido está fora do intervalo de 1 a 10 e exibir uma mensagem de erro, se necessário.
+% Quando o valor está dentro do intervalo válido, o comando verifica cada condição separadamente usando o comando \ifnum, seguido pelo valor correspondente do período por extenso e, em seguida, fechado com \fi.
+%
+% Para utilizar o comando \pernum, insira \pernum{<número do período de 1 à 10>}
+%
+% Exemplo de uso:
+% \pernum{3} retorna "Terceiro"
+%
+% Se o valor fornecido estiver fora do intervalo de 1 a 10, a mensagem "!Erro!" será exibida.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Imprime a planilha do período
 \newcommand{\tabelaPeriodo}[2]{% \tabelaPeriodo{<número do período de 1 à 10>}{<arquivo csv>}
     
