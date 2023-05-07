@@ -341,17 +341,35 @@
 }
 
 %Lista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
-\newcommand{\tiraespaco}{)}
-\newcommand{\listaUC}[2]{\!\!\!
-    \csvreader[ head to column names, 
-                separator=pipe,                
-                late after line={{,}\space},
-                late after first line={{,}\space},
-                late after last line={},
-                filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
-        \nome\space(\autoref{qua:uc\codigo}\tiraespaco
-    }\!\!
-}
+% \newcommand{\tiraespaco}{)}
+% \newcommand{\listaUC}[2]{\!\!\!
+%     \csvreader[ head to column names, 
+%                 separator=pipe,                
+%                 late after line={{,}\space},
+%                 late after first line={{,}\space},
+%                 late after last line={},
+%                 filter test=\ifnumequal{\periodo}{#1}]{#2}{}{%
+%         \nome\space(\autoref{qua:uc\codigo}\tiraespaco
+%     }\!\!
+% }
+
+\newcounter{totalrows}
+\newcounter{currentrow}
+\newcommand{\listaUC}[2]{%
+    \setcounter{totalrows}{0}%
+    \setcounter{currentrow}{0}%
+    \csvreader[ head to column names,%
+                separator=pipe,%
+                filter test=\ifnumequal{\periodo}{#1}]{#2}{}{\stepcounter{totalrows}}%
+    \csvreader[ head to column names,%
+                separator=pipe,%
+                late after line={\stepcounter{currentrow}\ifnumequal{\the\value{currentrow}}{\the\value{totalrows}-1}{ e\space}{,\space}},%
+                late after last line={},%
+                filter test=\ifnumequal{\periodo}{#1}]{#2}{}{\nome\space(\autoref{qua:uc\codigo})}%
+}%
+
+
+
 
 %\newcommand{\tiraespaco}{)}
 % \newcommand{\listaUC}[2]{
