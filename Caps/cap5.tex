@@ -116,23 +116,41 @@ No campo dos pré-requisitos (PR) de algumas unidades curriculares, como é o ca
 \begin{figure}[hbt!]
 	\centering
 	\caption{Codificação das unidades curriculares da Matriz}
-	\includegraphics[width=0.6\textwidth]{Caps/Figs/Matriz_final_v2_leg2.eps}
+	% \includegraphics[width=0.6\textwidth]{Caps/Figs/Matriz_final_v2_leg2.eps}
+	\quadroUnitCurricularLegenda{yellow}
 	\fonte{\utf}
 	\label{fig:legenda}
 \end{figure}
 
-\newgeometry{textwidth=200mm,textheight=290mm}
-\begin{landscape}
+% \newgeometry{textwidth=200mm,textheight=290mm}
+% \begin{landscape}
+% 	\begin{quadro}
+% 		\centering
+% 		\caption{Matriz do Curso de Engenharia Eletrônica}
+% 		\includegraphics[width=1.3\textwidth]{Caps/Figs/Matriz_final_v2.eps}
+% 		\fonte{\utf}
+% 		\label{qua:matriz}
+% 	\end{quadro}
+% \end{landscape}
+% \restoregeometry
+
+\KOMAoptions{paper=landscape,paper=A3}
+    \recalctypearea
+    \newgeometry{margin=1cm, bottom=0cm}
+	\thispagestyle{plain}
+
 	\begin{quadro}
 		\centering
 		\caption{Matriz do Curso de Engenharia Eletrônica}
-		\includegraphics[width=1.3\textwidth]{Caps/Figs/Matriz_final_v2.eps}
+		% \includegraphics[width=1.3\textwidth]{Caps/Figs/Matriz_final_v2.eps}
+		\distribuiQuadrosUC
 		\fonte{\utf}
 		\label{qua:matriz}
 	\end{quadro}
-\end{landscape}
-\restoregeometry
 
+	\restoregeometry % Restaura a geometria do documento para o padrão após o quadro
+\KOMAoptions{paper=portrait,paper=A4}
+\recalctypearea
 
 
 \subsection{Regime Letivo}

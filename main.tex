@@ -116,8 +116,23 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{colortbl}
 \usepackage{cellspace}
 \usepackage{csvsimple} % Para ler arquivos CSV
-
-
+\usepackage{tikz}
+%\usetikzlibrary{shadows} % Para sombras simples
+\usetikzlibrary{shadows.blur} % Para sombras com desfoque
+\usepackage{afterpage} % É utilizado com o comando \afterpage para inserir o conteúdo na próxima página disponível, mantendo o fluxo do texto.
+\usepackage{pgffor}    % Necessário para o comando \foreach
+%\usepackage{calc}
+\usepackage{array} % Para melhor controle de colunas em ambientes tabulares
+\usepackage{pgfplotstable} % Se precisar ler do CSV diretamente
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt} % clear rules
+% \usepackage{lastpage}
+\fancyfoot[C]{\thepage}
+\pgfplotsset{compat=1.18}
+\usepackage[paper=A4]{typearea}
+\usepackage{pdftexcmds}
 
 % Configura o modo matemático para substituir o ponto por vírgula
 \mathchardef\period=\mathcode`.
@@ -249,7 +264,7 @@ english,french,spanish,brazil]{abntex2}
     
     
     %\input{Caps/orientacoes_modelo.tex} 
-    \input{Caps/apresentacao.tex}
+    % \input{Caps/apresentacao.tex}
     
     	
     \input{Caps/cap1.tex} % CONTEXTUALIZAÇÃO DA INSTITUIÇÃO
@@ -263,7 +278,7 @@ english,french,spanish,brazil]{abntex2}
     \input{Caps/cap9.tex}
     \input{Caps/cap10.tex}
     \input{Caps/cap11.tex}
-            
+    % \input{teste.tex}        
     % Bibliografia
     \bibliography{references}
     
@@ -271,7 +286,7 @@ english,french,spanish,brazil]{abntex2}
     
     % Apêndices:
     \apendices
-    \input{Apendices/apendice_1.tex}
+    % \input{Apendices/apendice_1.tex}
     
     % Anexos:
     \anexos

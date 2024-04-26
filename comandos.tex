@@ -353,6 +353,7 @@
 %     }\!\!
 % }
 
+%Lista as disciplinas de um período em texto corrido, referenciando o quadro das características estruturais
 \newcounter{totalrows}
 \newcounter{currentrow}
 \newcommand{\listaUC}[2]{%
@@ -397,3 +398,479 @@
         %\chtotal #1,
     }%
 }%
+
+% Define uma macro para coordenadas padronizadas
+\newcommand{\coord}[2]{(#1*1.1cm,#2*1.1cm)}
+
+% Imprime quadro demonstrativo de unidade curricular com legenda
+\newcommand{\quadroUnitCurricularLegenda}[1]{
+    \begin{tikzpicture} 
+        
+        %Título
+        \fill[black, blur shadow] \coord{0}{2} rectangle \coord{11.6}{2.3};       
+        \node[white, align=center, text width=2.5*1.1cm, font=\sffamily\scriptsize] at \coord{5.8}{2.15} {\textbf{Legenda}};
+        
+        % Desenha amarelo, branco e sombra
+        \fill[#1, blur shadow] \coord{0}{0} rectangle \coord{3}{1.8};       
+        \fill[black] \coord{2.5}{1.5} rectangle \coord{3}{1.8};
+        \fill[white] \coord{0}{0} rectangle \coord{2.5}{0.3};
+        \fill[white] \coord{2.5}{0} rectangle \coord{3}{1.5};
+        \draw[line width=1pt] \coord{0}{0} rectangle \coord{3}{1.8};
+        
+        % Linhas horizontais
+        \draw \coord{0}{.3} -- \coord{3}{.3};
+        \draw \coord{0}{.6} -- \coord{3}{.6};
+        \draw \coord{2.5}{.9} -- \coord{3}{.9};
+        \draw \coord{2.5}{1.2} -- \coord{3}{1.2};
+        
+        % Linhas verticais
+        \draw \coord{2.5}{0} -- \coord{2.5}{1.8};
+        
+        % Nome da disciplina
+        \node[align=center, text width=2.5*1.1cm, font=\sffamily\scriptsize] at \coord{0.5*2.5}{1.2} {\textbf{Nome da unidade curricular}};
+        % Código da disciplina
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{0.5*2.5}{0.45} {Código};
+        % Referência
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{1.65} {\textcolor{white}{\fontsize{6pt}{6pt}\selectfont \textbf{R}}};
+        % Carga horária total
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{1.35} {\textcolor{red}{\fontsize{6pt}{6pt}\selectfont \textbf{CT}}};
+        % Atividades práticas
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{1.05} {\textcolor{blue}{\fontsize{6pt}{6pt}\selectfont AP}};
+        % Atividades teóricas
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{0.75} {\textcolor{violet}{\fontsize{6pt}{6pt}\selectfont AT}};
+        % Extensão
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{0.45} {\textcolor{olive}{\fontsize{6pt}{6pt}\selectfont EX}};
+        % Núcleo de conteúdo
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{2.75}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{NC}}};
+        % Pré-requisitos
+        \node[align=center, text width=2.3cm, font=\sffamily\tiny] at \coord{0.5*2.5}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont Pré-requisitos}};
+
+        % Legenda
+        \draw[->] \coord{3.1}{1.65} -- \coord{3.5}{1.65};
+        \draw[->] \coord{3.1}{1.35} -- \coord{3.5}{1.35};
+        \draw[->] \coord{3.1}{1.05} -- \coord{3.5}{1.05};
+        \draw[->] \coord{3.1}{0.75} -- \coord{3.5}{0.75};
+        \draw[->] \coord{3.1}{0.45} -- \coord{3.5}{0.45};
+        \draw[->] \coord{3.1}{0.15} -- \coord{3.5}{0.15};
+
+        % Referência
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.75}{1.65} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Referência na matriz}}};
+        % Carga horária total
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.75}{1.35} {\textcolor{red}{\fontsize{6pt}{6pt}\selectfont \textbf{Carga horária total (h)}}};
+        % Atividades práticas
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.75}{1.05} {\textcolor{blue}{\fontsize{6pt}{6pt}\selectfont Atividades práticas (h)}};
+        % Atividades teóricas
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.75}{0.75} {\textcolor{violet}{\fontsize{6pt}{6pt}\selectfont Atividades teóricas (h)}};
+        % Extensão
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.75}{0.45} {\textcolor{olive}{\fontsize{6pt}{6pt}\selectfont Extensão (h)}};
+        % Núcleo de conteúdo
+        \node[align=left, text width=2.5cm, font=\sffamily\tiny] at \coord{4.754}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Núcleo de conteúdo}}};
+        
+        % Núcleos
+        \draw[line width=1pt] \coord{6.5}{0} rectangle \coord{11.6}{1.8};
+        \draw \coord{6.5}{.6}       -- \coord{11.6}{.6};
+        \draw \coord{6.5}{1.2}      -- \coord{11.6}{1.2};
+        \draw[->, line width=1pt] \coord{5.6}{0.15} -- \coord{6.4}{0.15};
+
+        \node[align=left, text width=5.5cm, font=\sffamily\tiny] at \coord{9.1}{1.5} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{(B) Básico:} base científica e tecnológica necessária para a formação do engenheiro eletrônico}};
+        \node[align=left, text width=5.5cm, font=\sffamily\tiny] at \coord{9.1}{0.9} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{(P) Profissionalizante geral:} conhecimentos gerais para a atuação profissional}};
+        \node[align=left, text width=5.5cm, font=\sffamily\tiny] at \coord{9.1}{0.3} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{(PE) Profissionalizante específico:} conhecimentos aprofundados para a atuação profissional}};
+    \end{tikzpicture}
+}
+
+% Imprime quadro demonstrativo de unidade curricular com legenda
+\newcommand{\quadroContabilizacao}{
+    \begin{tikzpicture} 
+        
+        %Título
+        \fill[black, blur shadow] \coord{0}{2} rectangle \coord{11.6}{2.3};       
+        \node[white, align=center, text width=11.6cm, font=\sffamily\scriptsize] at \coord{5.8}{2.15} {\textbf{Contabilização da carga horária do curso (h)}};
+        
+        % Quadro esquerda
+        \fill[white, blur shadow] \coord{0}{0} rectangle \coord{5.6}{1.8};
+        \draw[line width=1pt] \coord{0}{0} rectangle \coord{5.6}{1.8};
+
+        % Quadro direita
+        \fill[white, blur shadow] \coord{6}{0} rectangle \coord{11.6}{1.8};
+        \draw[line width=1pt] \coord{6}{0} rectangle \coord{11.6}{1.8};
+        
+        % Linhas horizontais
+        \draw \coord{0}{.3} -- \coord{5.6}{.3};
+        \draw \coord{0}{.6} -- \coord{5.6}{.6};
+        \draw \coord{0}{.9} -- \coord{5.6}{.9};
+        \draw \coord{0}{1.2} -- \coord{5.6}{1.2};
+        \draw \coord{0}{1.5} -- \coord{5.6}{1.5};
+        \draw \coord{6}{.3} -- \coord{11.6}{.3};
+        \draw \coord{6}{.6} -- \coord{11.6}{.6};
+        \draw \coord{6}{.9} -- \coord{11.6}{.9};
+        \draw \coord{6}{1.2} -- \coord{11.6}{1.2};
+        \draw \coord{6}{1.5} -- \coord{11.6}{1.5};
+        
+        % Linhas verticais
+        \draw \coord{5}{0} -- \coord{5}{1.8};
+        \draw \coord{11}{0} -- \coord{11}{1.8};
+        
+        
+        % Unidades curriculares
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{1.65} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Unidades curriculares}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{1.65} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasUC}}}};
+        % Atividades práticas
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{1.35} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Atividades práticas}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{1.35} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasAP}}}};
+        % Atividades teóricas
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{1.05} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Atividades teórica}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{1.05} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasAT}}}};
+        % Unidade curriculares extensionistas
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{0.75} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Unidades curriculares extensionistas}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{0.75} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasUCEXT}}}};
+        % Componente curricular de extensão (apostilamento)
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{0.45} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Componente curricular de extensão (apostilamento)}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{0.45} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasUCEXT}}}};
+        % Total de extensão
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{4.7}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Total de extensão}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{9.6}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasEXT}}}};
+        
+        % Optativas
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{1.65} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Total de optativas}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.6}{1.65} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasOPT}}}};
+        % Trilha de aprofundamento
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{1.35} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Trilha de aprofundamento}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.6}{1.35} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{180}}};
+        % Ciclo de humanidades
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{1.05} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Total do ciclo de humanidades}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.6}{1.05} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasH}}}};
+        % Optativas do ciclo de humanidades
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{0.75} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Optativas do ciclo de humanidades}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.5}{0.75} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\dadoCHT{E.3}}}};
+        % Estágio
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{0.45} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Estágio obrigatório}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.6}{0.45} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasEST}}}};
+        % Total do curso
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{10.7}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{Total do curso}}};
+        \node[align=left, text width=10cm, font=\sffamily\tiny] at \coord{15.6}{0.15} {\textcolor{black}{\fontsize{6pt}{6pt}\selectfont \textbf{\the\value{horasT}}}};
+        
+    \end{tikzpicture}
+}
+
+% Comando para definir a cor com base em dados do CSV (ou condições predefinidas)
+% \newcommand{\corQuadro}{grey}
+\edef\corQuadro{gray}
+\newcommand{\defineCorFromCSV}[1]{% #1 é o identificador da UC
+    \renewcommand{\corQuadro}{yellow} % Cor padrão
+    % \renewcommand{\tempRef}{#1}
+    \csvreader[%
+        head to column names,
+        separator=pipe,
+        filter strcmp={\referencia}{#1}
+    ]{Dados/unidadesCurriculares.csv}{}{%
+        % Supondo que 'ext', 'humanidades' e 'opt' sejam colunas do CSV correspondentes    
+        \ifnumcomp{\ext}{>}{0}{%
+            % \renewcommand{\corQuadro}{cyan}%
+            \edef\corQuadro{cyan}%
+        }{%
+            \ifnumcomp{\humanidades}{>}{0}{%
+                % \renewcommand{\corQuadro}{green}%
+            \edef\corQuadro{green}        
+            }{%
+                \ifthenelse{\equal{\opt}{optativa}}}{%
+                    % \renewcommand{\corQuadro}{grey}%
+                    \edef\corQuadro{gray}
+                }{%
+                    % \renewcommand{\corQuadro}{yellow}%
+                    \edef\corQuadro{yellow}
+                }%
+            }%
+    }%
+}
+
+% Para indicar o período no quadro de disciplinas
+\newcommand{\quadroTituloPeriodo}[2]{
+    % Verifica a cor do quadro    
+% \defineCorFromCSV{#1}
+    
+    % Realiza o cálculo e armazena o resultado na macro \myfontsize e \mylinespacing
+    \pgfmathsetmacro{\myfontsize}{#2 * 6} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\mylinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    \pgfmathsetmacro{\namefontsize}{#2 * 8} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\namelinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    \begin{tikzpicture}[baseline=(current bounding box.north), every node/.style={font=\sffamily\fontsize{\myfontsize}{\mylinespacing}\selectfont}, scale=#2]%
+        \fill[white, blur shadow] \coord{0}{0} rectangle \coord{3}{0.5};%
+        \draw[line width=1pt] \coord{0}{0} rectangle \coord{3}{0.5};%
+        \node[align=center, text width=#2*2.5cm] at \coord{1.5}{0.25} {\fontsize{\namefontsize}{\namelinespacing}\selectfont \textbf{#1\textordmasculine{} Período}};% Nome da disciplina
+    \end{tikzpicture}
+}
+
+% Para indicar estágio, extensão e optativa de humanidades
+\newcommand{\quadroComprido}[4]{ 
+    
+    \def\offsetX{3.2} % Ajuste baseado no tamanho dos quadros
+    % Realiza o cálculo e armazena o resultado na macro \myfontsize e \mylinespacing
+    \pgfmathsetmacro{\myfontsize}{#2 * 6} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\mylinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    \pgfmathsetmacro{\namefontsize}{#2 * 8} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\namelinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+
+    \pgfmathsetmacro{\len}{#1*\offsetX}
+
+    \begin{tikzpicture}[baseline=(current bounding box.north), every node/.style={font=\sffamily\fontsize{\myfontsize}{\mylinespacing}\selectfont}, scale=#2]%
+        \fill[#4, blur shadow] \coord{0}{0} rectangle \coord{\len}{0.6};%
+        \draw[line width=1pt] \coord{0}{0} rectangle \coord{\len}{0.6};%
+        \node[align=center] at \coord{\len*0.5}{0.3} {\fontsize{\namefontsize}{\namelinespacing}\selectfont \textbf{#3}};% Nome da disciplina
+    \end{tikzpicture}
+}
+
+% Comando para imprimir um quadro com informações de uma unidade curricular
+% Parâmetros:
+%   #1 - Referência da unidade curricular (usada para buscar no arquivo CSV)
+%   #2 - Cor de fundo do quadro
+\newcommand{\quadroUnitCurricular}[2]{
+    % Verifica a cor do quadro    
+% \defineCorFromCSV{#1}
+    
+    % Realiza o cálculo e armazena o resultado na macro \myfontsize e \mylinespacing
+    \pgfmathsetmacro{\myfontsize}{#2 * 6} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\mylinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    \pgfmathsetmacro{\namefontsize}{#2 * 8} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\namelinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    % Lê informações da unidade curricular do arquivo CSV
+    \csvreader[
+        head to column names, 
+        separator=pipe
+    ]{Dados/unidadesCurriculares.csv}{}{%
+        % Verifica se a referência da linha atual corresponde ao parâmetro #1
+        \ifthenelse{\equal{\referencia}{#1}}{%            
+            \begin{tikzpicture}[baseline=(current bounding box.north), every node/.style={font=\sffamily\fontsize{\myfontsize}{\mylinespacing}\selectfont}, scale=#2]%       
+                
+                
+                \fill[\corQuadro, blur shadow] \coord{0}{0} rectangle \coord{3}{1.8};%
+                                
+                % Desenha áreas específicas do quadro (preto para o código da UC, branco para informações)
+                \fill[black] \coord{2.5}{1.5} rectangle \coord{3}{1.8};% Área do código da UC
+                \fill[white] \coord{0}{0} rectangle \coord{2.5}{0.3};% Área de texto inferior
+                \fill[white] \coord{2.5}{0} rectangle \coord{3}{1.5};% Área lateral para informações adicionais
+        
+                % Contorno externo do quadro
+                \draw[line width=1pt] \coord{0}{0} rectangle \coord{3}{1.8};%
+                
+                % Linhas internas para separar as seções do quadro
+                \draw \coord{0}{.3} -- \coord{3}{.3};%
+                \draw \coord{0}{.6} -- \coord{3}{.6};%
+                \draw \coord{2.5}{.9} -- \coord{3}{.9};%
+                \draw \coord{2.5}{1.2} -- \coord{3}{1.2};%
+                \draw \coord{2.5}{0} -- \coord{2.5}{1.8};%
+                % Insere informações da UC no quadro
+                \node[align=center, text width=#2*2.5cm] at \coord{0.5*2.5}{1.2} {\fontsize{\namefontsize}{\namelinespacing}\selectfont \textbf{\nome}};% Nome da disciplina
+                \node[align=center, text width=2.3cm] at \coord{0.5*2.5}{0.45} {\codigo};% Código da disciplina
+                                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{1.65} {\textcolor{white}{\textbf{\referencia}}};% Referência                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{1.35} {\textcolor{red}{\textbf{\chtotal}}};% Carga horária total                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{1.05} {\textcolor{blue}{\chPratica}};% Atividades práticas                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{0.75} {\textcolor{violet}{\chTeorica}};% Atividades teóricas                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{0.45} {\textcolor{olive}{\ext}};% Extensão                
+                \node[align=center, text width=2.3cm] at \coord{2.75}{0.15} {\textcolor{black}{\textbf{\tipo}}};% Núcleo de conteúdo                
+                \node[align=center, text width=2.3cm] at \coord{0.5*2.5}{0.15} {\textcolor{black}{\prereq}};% Pré-requisitos
+                
+            \end{tikzpicture} 
+        }%
+    }%
+           
+}
+
+\newcommand{\quadroResumoPeriodo}[2]{
+    % Verifica a cor do quadro    
+% \defineCorFromCSV{#1}
+    
+    % Realiza o cálculo e armazena o resultado na macro \myfontsize e \mylinespacing
+    \pgfmathsetmacro{\myfontsize}{#2 * 6} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\mylinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    \pgfmathsetmacro{\namefontsize}{#2 * 8} % Por exemplo, 10pt com um fator de escala
+    \pgfmathsetmacro{\namelinespacing}{\myfontsize * 1.2} % Espaçamento entre linhas baseado no tamanho da fonte
+    % Lê informações da unidade curricular do arquivo CSV
+    
+    \begin{tikzpicture}[baseline=(current bounding box.north), every node/.style={font=\sffamily\fontsize{\myfontsize}{\mylinespacing}\selectfont}, scale=#2]%       
+                
+        % Quadro branco com sombra
+        \fill[white, blur shadow] \coord{0}{0} rectangle \coord{3}{1.5};%
+                        
+        % Título
+        \fill[black] \coord{0}{1.2} rectangle \coord{3}{1.5};% Área do código da UC
+        \node[align=center, text width=2.3cm] at \coord{1.5}{1.35} {\textcolor{white}{\textbf{Totais do #1\textordmasculine{} Período}}};% Período
+
+        % Contorno externo do quadro
+        \draw[line width=1pt] \coord{0}{0} rectangle \coord{3}{1.5};%
+        
+        % Linhas internas para separar as seções do quadro
+        \draw \coord{0}{.3} -- \coord{3}{.3};%
+        \draw \coord{0}{.6} -- \coord{3}{.6};%
+        \draw \coord{0}{.9} -- \coord{3}{.9};%
+        \draw \coord{0}{1.2} -- \coord{3}{1.2};%
+        \draw \coord{2.5}{0} -- \coord{2.5}{1.2};%
+        
+                               
+        \node[align=left, text width=2.7cm] at \coord{1.3}{1.05} {\textbf{C. horária total (h)}};% Carga horária total                
+        \node[align=left, text width=2.7cm] at \coord{1.3}{0.75} {\textbf{C. horária prática (h)}};% Atividades práticas                
+        \node[align=left, text width=2.7cm] at \coord{1.3}{0.45} {\textbf{C. horária teórica (h)}};% Atividades teóricas                
+        \node[align=left, text width=2.7cm] at \coord{1.3}{0.15} {\textbf{C. horária de extensão (h)}};% Extensão
+        
+        \node[align=left, text width=0.5cm] at \coord{2.76}{1.05} {\textbf{\the\value{horasT#1}}};% Carga horária total                
+        \node[align=left, text width=0.5cm] at \coord{2.76}{0.75} {\textbf{\the\value{horasAP#1}}};% Atividades práticas                
+        \node[align=left, text width=0.5cm] at \coord{2.76}{0.45} {\textbf{\the\value{horasAT#1}}};% Atividades teóricas                
+        \node[align=left, text width=0.5cm] at \coord{2.76}{0.15} {\textbf{\the\value{horasEXT#1}}};% Extensão  
+        
+        
+    \end{tikzpicture}
+           
+}
+
+% Define comando para encontrar o maior número de disciplinas em um período
+\edef\maxLines{1}
+\newcommand{\maxdisciplinas}{
+    \newcounter{maxnum}    % Define um contador para armazenar o número máximo de disciplinas
+    \setcounter{maxnum}{0} % Inicializa o contador máximo com zero
+    \newcounter{tempcount} % Define um contador temporário para contar disciplinas em cada período
+    \newcounter{n}         % Valor do período    
+    
+    % Loop para verificar cada período de 1 a 10
+    \setcounter{n}{0}
+    \whileboolexpr{test {\ifnumcomp{\value{n}}{<}{10}}}{% Analisa até 10º período
+        \stepcounter{n}
+        \setcounter{tempcount}{0} % Reseta o contador temporário para o período atual
+        % Processa o arquivo CSV linha por linha
+        \csvreader[
+            head to column names,
+            separator=pipe,
+            filter expr={
+                test{\ifnumequal{\periodo}{\value{n}}}
+            }
+        ]{Dados/unidadesCurriculares.csv}{}{
+            \stepcounter{tempcount} % Incrementa o contador temporário se a condição for verdadeira
+        }%
+        % Após contar todas as disciplinas para um período, verifica se é o maior número
+        \ifnum\value{tempcount}>\value{maxnum}
+            \setcounter{maxnum}{\value{tempcount}} % Atualiza o contador máximo se o número atual é maior
+        \fi
+    }%
+    % \the\value{maxnum} % Retorna o valor do número máximo de disciplinas
+    \edef\maxLines{\arabic{maxnum}}
+}
+
+
+% Imprime os quadros das unidades curriculares
+\newcommand{\distribuiQuadrosUC}{   
+    \newcounter{periodoCtn}
+    \newcounter{ucCtn}
+    \setcounter{periodoCtn}{1}
+    \setcounter{ucCtn}{1}
+    \maxdisciplinas
+    \begin{tikzpicture}[baseline=(current bounding box.north), every node/.style={font=\sffamily\fontsize{7}{7.2}\selectfont}]%
+        % Definir as coordenadas iniciais
+        \def\startX{0}
+        \def\startY{0}
+        \def\offsetX{3.6} % Ajuste baseado no tamanho dos quadros
+        \def\offsetY{-2.2} % Ajuste baseado no tamanho dos quadros
+        
+        % Imprime a legenda
+        \pgfmathsetmacro{\posX}{-2}
+        \pgfmathsetmacro{\posY}{2.2}
+        \fill[yellow, blur shadow] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \draw[line width=1pt] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \node[align=left, text width=2.5cm] at (\posX+2,\posY+0.25) {\textbf{Unidade curricular convencional}};
+
+        \pgfmathsetmacro{\posX}{-2+\offsetX}
+        \fill[green, blur shadow] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \draw[line width=1pt] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \node[align=left, text width=2.5cm] at (\posX+2,\posY+0.25) {\textbf{Unidade curricular de humanidades}};
+
+        \pgfmathsetmacro{\posX}{-2+2*\offsetX}
+        \fill[cyan, blur shadow] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \draw[line width=1pt] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \node[align=left, text width=2.5cm] at (\posX+2,\posY+0.25) {\textbf{Unidade curricular extensionista}};
+
+        \pgfmathsetmacro{\posX}{-2+3*\offsetX}
+        \fill[gray, blur shadow] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \draw[line width=1pt] (\posX,\posY) rectangle (\posX+0.5,\posY+0.5);%
+        \node[align=left, text width=2.5cm] at (\posX+2,\posY+0.25) {\textbf{Unidade curricular optativa}};
+
+        \draw[line width=1pt] (\posX-3*\offsetX ,\posY-0.2) -- (\posX+3.3,\posY-0.2);%
+
+        % Imprime os títulos dos períodos
+        \foreach \periodo in {1,...,10}{
+            \pgfmathsetmacro{\posX}{-0.5 + (\periodo - 1) * \offsetX}
+            \pgfmathsetmacro{\posY}{1.5}   
+            \node[align=left] at (\posX,\posY) {\quadroTituloPeriodo{\arabic{periodoCtn}}{1}};
+            % \node[circle, draw, fill=black, minimum size=2pt, inner sep=0pt] at (\posX,\posY) {};
+            \stepcounter{periodoCtn}
+        }
+        \setcounter{periodoCtn}{1}
+
+        % Loop através dos períodos (1 a 10) para apresentar as caixas de unidades curriculares
+        \foreach \periodo in {1,...,10}{
+            % Calcular a posição X baseada no período (pode precisar ajustar a lógica)
+            \pgfmathsetmacro{\posX}{\startX + (\periodo - 1) * \offsetX}
+            \setcounter{ucCtn}{1}
+            % Aqui você precisa saber quantas UCs tem por período. Exemplo simples:
+            \foreach \uc in {1,...,\maxLines}{ % Assumindo um máximo fixo de 5 UCs por período para o exemplo
+                \pgfmathsetmacro{\posY}{\startY + (\uc - 1) * \offsetY}
+                % Aqui você chamaria \quadroUnitCurricular{\periodo.\uc} para cada UC
+                \edef\refTemp{\arabic{periodoCtn}.\arabic{ucCtn}}  
+                \defineCorFromCSV{\refTemp}             
+                \node[align=left] at (\posX,\posY) {\quadroUnitCurricular{\refTemp}{1}};
+                % \node[circle, draw, fill=black, minimum size=2pt, inner sep=0pt] at (\posX,\posY) {};
+                \stepcounter{ucCtn}       
+            }
+            \stepcounter{periodoCtn}            
+        }
+        
+        % Estágio
+        \pgfmathsetmacro{\posX}{\startX -0.6 + 8 * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 - 1.2) * \offsetY} 
+        \node[align=left] at (\posX,\posY) {\quadroComprido{3}{1}{Estágio Curricular Obrigatório: \the\value{horasEST} h}{yellow}};
+        
+        % Optativa de humanidades
+        \pgfmathsetmacro{\posX}{\startX -0.6 + 6 * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 - 0.8) * \offsetY} 
+        \node[align=left] at (\posX,\posY) {\quadroComprido{7.1}{1}{Opativas do ciclo de humanidades: \dadoCHT{E.3} h}{gray}};
+
+        % Extensão - apostilamento
+        \pgfmathsetmacro{\posX}{\startX -0.6 + 5 * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 - 0.4) * \offsetY} 
+        \node[align=left] at (\posX,\posY) {\quadroComprido{9.15}{1}{Atividades de extensão - apostilamento: \dadoCHT{E.2} h}{cyan}}; 
+
+        \pgfmathsetmacro{\posX}{\startX -2.05}        
+        \draw[line width=1pt] (\posX,\posY-0.6) -- (\posX+10*\offsetX-0.2,\posY-0.6);%
+
+        % Resumos dos períodos
+        \pgfmathsetmacro{\posY}{\startY + (8 + 0.4) * \offsetY}
+        \setcounter{periodoCtn}{1}
+        % Imprime os títulos dos períodos
+        \foreach \periodo in {1,...,10}{
+            \pgfmathsetmacro{\posX}{-0.5 + (\periodo - 1) * \offsetX}
+            \node[align=left] at (\posX,\posY) {\quadroResumoPeriodo{\arabic{periodoCtn}}{1}};
+            % \node[circle, draw, fill=black, minimum size=2pt, inner sep=0pt] at (\posX,\posY) {};
+            \stepcounter{periodoCtn}
+        }
+
+        % Legenda dos quadros
+        \pgfmathsetmacro{\posX}{\startX + 0.69 + (1) * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 + 1.5) * \offsetY}
+        \node at (\posX,\posY) {\quadroUnitCurricularLegenda{yellow}};
+
+        % Contabilização
+        \pgfmathsetmacro{\posX}{\startX - 0.35 + (9) * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 + 1.5) * \offsetY}
+        \node at (\posX,\posY) {\quadroContabilizacao};
+
+        % logo
+        \pgfmathsetmacro{\posX}{\startX + 1.4 + (3) * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 + 1.5) * \offsetY}
+        \node at (\posX,\posY) {\includegraphics[scale=1.5]{logo2020_small.png}};
+
+        % logo utfpr
+        \pgfmathsetmacro{\posX}{\startX + 1.0 + (4.5) * \offsetX}
+        \pgfmathsetmacro{\posY}{\startY + (8 + 1.5) * \offsetY}
+        \node at (\posX,\posY) {\includegraphics[scale=0.18]{logo_utfpr.png}};
+
+
+    \end{tikzpicture}
+}
+

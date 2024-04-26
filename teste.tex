@@ -1,0 +1,76 @@
+\quadroUnitCurricularLegenda{yellow} % Usar o comando definido
+
+
+\quadroUnitCurricular{6.1}{1}
+
+\quadroUnitCurricular{1.1}{0.7}
+%\dadoCHT{1.1}
+
+\newcounter{a}  % Valor do período
+\newcounter{b}  % Contador temporário para somar teórica com prática
+\setcounter{a}{1}
+\setcounter{b}{1}
+% \quadroUnitCurricular{\arabic{a}.\arabic{b}}{1}
+\defineCorFromCSV{\arabic{a}.\arabic{b}}
+\corQuadro
+
+\setcounter{a}{6}
+\setcounter{b}{1}
+% \quadroUnitCurricular{\arabic{a}.\arabic{b}}{1}
+\defineCorFromCSV{\arabic{a}.\arabic{b}}
+\corQuadro
+
+\setcounter{a}{1}
+\setcounter{b}{5}
+% \quadroUnitCurricular{\arabic{a}.\arabic{b}}{1}
+\defineCorFromCSV{\arabic{a}.\arabic{b}}
+\corQuadro
+
+\setcounter{a}{8}
+\setcounter{b}{5}
+% \quadroUnitCurricular{\arabic{a}.\arabic{b}}{1}
+\defineCorFromCSV{\arabic{a}.\arabic{b}}
+\corQuadro
+% \maxdisciplinas
+
+\quadroTituloPeriodo{1}{1}
+
+
+
+\dadoCHT{\value{a}.\value{b}}
+
+\quadroResumoPeriodo{1}{1}
+
+\quadroContabilizacao
+% \newpage
+
+
+% \begin{landscape}
+% % Inserir um novo float em uma página separada em formato paisagem
+
+    
+    % \clearpage % Certifique-se de começar uma nova página
+    \KOMAoptions{paper=landscape,paper=A3}
+    \recalctypearea
+    \newgeometry{margin=1cm, bottom=0cm} 
+    % \begin{landscape}
+    \thispagestyle{plain}
+    % \pagenumbering{gobble}
+    \begin{figure}[p]
+        \centering
+        \distribuiQuadrosUC
+        \caption{Quadro de disciplinas}
+    \end{figure}
+    
+        % Seu conteúdo do quadro vai aqui
+    % \imprimeQuadroUC
+
+  
+    
+    % \end{landscape}
+    \restoregeometry % Restaura a geometria do documento para o padrão após o quadro
+    % \pagenumbering{arabic}
+    \KOMAoptions{paper=portrait,paper=A4}
+    \recalctypearea
+
+% \end{landscape}
