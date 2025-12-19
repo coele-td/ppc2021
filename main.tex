@@ -62,7 +62,7 @@ english,french,spanish,brazil]{abntex2}
     abnt-thesis-year=final
 ]{abntex2cite} 
 \usepackage{forloop}
-\usepackage[pdftex]{color,graphicx}
+\usepackage{graphicx}
 \usepackage[author=Pfrimer,markup=Highlight,color=yellow]{pdfcomment}
 \usepackage[table,xcdraw]{xcolor}
 \definecolor{tableShade}{gray}{0.9}
@@ -82,13 +82,11 @@ english,french,spanish,brazil]{abntex2}
      \ifthenelse{\equal{#1}{S}}{\cleardoublepage\item\makebox[0.8\linewidth]{\textbf{\uppercase{\large{Lista de Símbolos}}}} \makebox[\linewidth]{}\\[0.6cm]}{}}}
 
 \usepackage{indentfirst} % Indenta o primeiro parágrafo de cada seção.
-\usepackage{multirow} % Pacote de tabulação para tabelas
 \usepackage{bm} % Define o comando \bm para cujo argumento fica em negrito, inclusive formulas matemáticas
 \usepackage{lastpage} % Usado por abntex2-fichacatalografica.tex
 \usepackage[font=small,labelfont=bf,textfont=bf]{caption} % Legendas de floats em tamanho 10pt e negrito
 \usepackage{listings} % Permite digitar códigos em Latex
 \usepackage{textcomp} % Pacote com símbolos adicionais para latex (Ex.: baht, bullet, copyright, musicalnote, onequarter, section e yen)
-\usepackage{caption} % Permite customizar a legenda de figuras e tabelas
 \usepackage{upgreek} % Utilizado para letras gregas não-itálicas
 \usepackage{lscape} % Permite rotacionar páginas, mas não os números das páginas.
 \usepackage{lipsum} % Para texto filler
@@ -97,7 +95,7 @@ english,french,spanish,brazil]{abntex2}
 %\usepackage{pgfgantt}
 %\usepackage[a-1b]{pdfx}
 
-\usepackage{hyperref}
+% \usepackage{hyperref}
 
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %insira novos pacotes aqui:
@@ -114,7 +112,7 @@ english,french,spanish,brazil]{abntex2}
 \usepackage{eurosym}
 \usepackage{pdflscape}
 \usepackage{colortbl}
-\usepackage{cellspace}
+% \usepackage{cellspace}
 \usepackage{csvsimple} % Para ler arquivos CSV
 \usepackage{tikz}
 %\usetikzlibrary{shadows} % Para sombras simples
@@ -131,7 +129,7 @@ english,french,spanish,brazil]{abntex2}
 % \usepackage{lastpage}
 \fancyfoot[C]{\thepage}
 \pgfplotsset{compat=1.18}
-\usepackage[paper=A4]{typearea}
+% \usepackage[paper=A4]{typearea}
 \usepackage{pdftexcmds}
 
 % Configura o modo matemático para substituir o ponto por vírgula
@@ -152,8 +150,8 @@ english,french,spanish,brazil]{abntex2}
 \usepackage[ddmmyyyy]{datetime}
 %++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %Outras configurações:
-
-
+\usepackage[paper=A4]{typearea}
+\usepackage{hyperref}
 % "Por padrão, uma versão sem serifas da fonte corrente do documento é utilizada para os títulos das divisões. Você pode customizar a fonte dos títulos dos capítulos alterando os comandos como no exemplo a seguir, para que seja utilizada a fonte Computer Modern com tamanho maior do que o utilizado por padrão" (manual do abntex2).
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXchapterfontsize}{\large}
@@ -181,7 +179,7 @@ english,french,spanish,brazil]{abntex2}
 \setfloatlocations{quadro}{hbtp}
 
 % Configurações de tabelas
-\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+% \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 
 % Comandos customizados
 \input{comandos.tex}
